@@ -229,12 +229,24 @@ img {
 #about .btn {
   margin-top: 30px;
 }
-
-/* team section */
-#team {
-  padding-top: 60px;
-  padding-bottom: 80px;
+.section h4{
+  color: #0558e3;
+  margin-bottom:2px;
+  margin-top:20px;
 }
+/* team section */
+#team .row {
+  margin: 5px;
+}
+#team {
+  margin-top: -120px;
+
+}
+#team .container{
+  background:#141414;
+
+}
+
 #team h2 {
   padding-bottom: 3px;
   text-align: center;
@@ -248,7 +260,8 @@ img {
   padding: 20px;
 }
 #team h4 {
-  color: #d54ab6;
+  /*color: #d54ab6;*/
+  color: #0558e3;
 }
 #team img {
   opacity: 0.8;
