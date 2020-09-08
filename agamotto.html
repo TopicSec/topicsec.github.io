@@ -12,11 +12,11 @@ OneTel Template
 http://www.templatemo.com/tm-468-onetel
 -->
 	<!-- stylesheet css -->
-	<link rel="stylesheet" href="https://topicsec.github.io/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://topicsec.github.io/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://topicsec.github.io/css/nivo-lightbox.css">
-	<link rel="stylesheet" href="https://topicsec.github.io/css/nivo_themes/default/default.css">
-	<link rel="stylesheet" href="https://topicsec.github.io/css/templatemo-style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/nivo-lightbox.css">
+	<link rel="stylesheet" href="css/nivo_themes/default/default.css">
+	<link rel="stylesheet" href="css/templatemo-style.css">
 	<!-- google web font css -->
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
@@ -59,7 +59,6 @@ http://www.templatemo.com/tm-468-onetel
 				
 			<div class="section">
 				<h4>Abstract</h4>
-				Abstract
 				<hr>
 				<p>Kernel-mode drivers are challenging to analyze for vulnerabilities, yet play a critical role in maintaining the security of OS kernels. Their wide attack surface, exposed via both the system call interface and the peripheral interface, is often found to be the most direct attack vector to compromise an OS kernel. Researchers therefore have proposed many fuzzing techniques to find vulnerabilities in kernel drivers. However, the performance of kernel fuzzers is still lacking, for reasons such as prolonged execution of kernel code, interference between test inputs, and kernel crashes</p>
 
@@ -79,7 +78,7 @@ http://www.templatemo.com/tm-468-onetel
 
 				<p>Agamotto fuzzes in the kernel space, which has significantly more technical obstacles.  Virtual devices cannot be used, as you need to test the hardware directly.  Successfully detecting bugs usually crashes the machine.  This could lead to the loss of test data and the necessity of resetting or restoring the machine, which significantly slows the testing process. As a result, You cannot simply fork off new processes or use copy-on-write to minimize overhead. In addition, instead of the input being a sequence of bits, a kernel fuzzer sends a sequence of actions or system calls, which have a rigid format that is not not effectively explored using mutational fuzzing methods.</p>
 			</div>
-			<div>
+			<div class="section">
 				<h4>Overview</h4>
 				<hr>
 				<p>Motivation: How do you fuzz the kernel?</p>
@@ -138,19 +137,19 @@ http://www.templatemo.com/tm-468-onetel
 
 			</div>
 
-			<div>
+			<div class="section">
 				<h4>Evaluation</h4>
 				<hr>
 				<p>Driver Fuzzing:</p>
 				<p>To test the effectiveness of Agamotto in speeding up the operation of Syzkaller, 8 USB drivers from 8 different vendors were fuzzed.  32 independent instances were used for each target, each started with a unique seed to make sure that there was no duplication of work, and each driver was fuzzed for a total of 3 hours.  Each experiment was performed 3 times and the results were averaged.</p>
 				<img src="images/agamotto4.png" width="600px"/>
 				<p>Benchmarking was performed for 3 different configurations: the first using unmodified Syzkaller, Agamotto-Root, a version of Agamotto with all of its enhancements that always restored to the root node, and the full version of Agamotto with its dynamic caching and restoring implementations.  The checkpoint caching hit rate barely reached about 50%.</p>
-				<img src="images/agamotto5.png" width="600px"/>
+				<img src="images/agamotto5.png" width="400px"/>
 				<p>In all cases, Agamotto-Root performed equivalent or better than base Syzkaller, and Agamotto performed the same or better than Agamotto-Root.</p>
 
 				<p>As was the case in the USB experiments, there is a spike at the very beginning of execution. However, most instances experienced an increase in executions the longer the fuzzer was run.</p>
 				<p>This is due to the fact that when a fuzzer first begins, it is more likely to discover more execution pathways. The fuzzing algorithm used mutates the initial seed 100 times. These small mutations on the same seed allow the checkpoints to significantly decrease runtime.</p>
-				<img src="images/agamotto6.png" width="600px"/>
+				<img src="images/agamotto6.png" width="400px"/>
 				<p>Figure 12 shows a comparison between restored and dirtied pages as a function of frequency and amount. Large groups of pages are frequently restored, however, large groups of dirtied pages are less frequently encountered. The deeper into the execution the fuzzer gets, the less information that is cached and as a result, pages are restored more often instead of creating another checkpoint.</p>
 
 				<p><h5>PCI Fuzzing:</h5></p>
@@ -158,7 +157,7 @@ http://www.templatemo.com/tm-468-onetel
 
 			</div>
 
-			<div>
+			<div class="section">
 				<h4>Conclusion</h4>
 				<hr>
 				<p>Agamotto is a fuzzer backend that decreases the run-time of a fuzzing iteration through the clever use of checkpoints to restore dirtied memory pages at the end of a run. The input-based checkpoints rather than basic-block based checkpoints essentially maps a state to an input which hasn’t been easily achieved before in the field of fuzzing.  The limited 3-hour tests shows promise but feels too limited of a trial to give a sense of the potential for this concept.</p>
@@ -177,10 +176,10 @@ http://www.templatemo.com/tm-468-onetel
 
 
 <!-- javascript js -->	
-<script src="https://topicsec.github.io/js/jquery.js"></script>
-<script src="https://topicsec.github.io/js/bootstrap.min.js"></script>	
-<script src="https://topicsec.github.io/js/nivo-lightbox.min.js"></script>
-<script src="https://topicsec.github.io/js/custom.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/nivo-lightbox.min.js"></script>
+<script src="js/custom.js"></script>
 
 </body>
 </html>
