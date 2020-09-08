@@ -59,55 +59,77 @@ http://www.templatemo.com/tm-468-onetel
 				
 			<div class="section">
 				<h4>Abstract</h4>
+				Abstract
 				<hr>
-				<p>Kernel-mode drivers are challenging to analyze for vulnerabilities, yet play a critical role in maintaining the security
+				<p>Kernel-mode drivers are challenging to analyze for vulnerabilities, yet play a critical role in maintaining the security of OS kernels. Their wide attack surface, exposed via both the system call interface and the peripheral interface, is often found to be the most direct attack vector to compromise an OS kernel. Researchers therefore have proposed many fuzzing techniques to find vulnerabilities in kernel drivers. However, the performance of kernel fuzzers is still lacking, for reasons such as prolonged execution of kernel code, interference between test inputs, and kernel crashes</p>
 
-					of OS kernels. Their wide attack surface, exposed via both
-					the system call interface and the peripheral interface, is often
-					found to be the most direct attack vector to compromise an OS
-					kernel. Researchers therefore have proposed many fuzzing
-					techniques to find vulnerabilities in kernel drivers. However,
-					the performance of kernel fuzzers is still lacking, for reasons
-					such as prolonged execution of kernel code, interference between test inputs, and kernel crashes</p>
-				<p>Kernel-mode drivers are challenging to analyze for vulnerabilities, yet play a critical role in maintaining the security
-					of OS kernels. Their wide attack surface, exposed via both
-					the system call interface and the peripheral interface, is often
-					found to be the most direct attack vector to compromise an OS
-					kernel. Researchers therefore have proposed many fuzzing
-					techniques to find vulnerabilities in kernel drivers. However,
-					the performance of kernel fuzzers is still lacking, for reasons
-					such as prolonged execution of kernel code, interference between test inputs, and kernel crashes</p>
+				<p>The main claimed contributions of this study are: 1) propose a new primitive in kernel driver fuzzing. They introduce dynamic virtual machine checkpointing to accelerate kernel driver fuzzing;  2) propose checkpoint management policies that can increase the utility of checkpoints created during the dynamic checkpointing process.</p>
 			</div>
 
 
 			<div class="section">
-				<h4>Data</h4>
+				<h4>Background</h4>
 				<hr>
-				<div class="row mt30">
 
-					<div class="col-md-6 col-sm-6">
+				<p>Fuzzing is the process of running an automated test of a program by passing input to a target, checking for unexpected behavior, and then starting over again with subtly different input. The goal of fuzzing is to comprehensively test as much of the code as possible with potential input that is likely to occur as well as input that is most likely to cause unexpected behavior.</p>
 
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet.</p>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismo.</p>
-					</div>
-					<div class="col-md-6 col-sm-6">
-						<strong>HTML5 &AMP; CSS3</strong>
-						<span class="pull-right">100%</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-						</div>
-						<strong>BOOTSTRAP</strong>
-						<span class="pull-right">80%</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-						</div>
-						<strong>UX Design</strong>
-						<span class="pull-right">70%</span>
-						<div class="progress">
-							<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-						</div>
-					</div>
-				</div>
+				<p>Modern fuzzing utilizes coverage tracing to detect how far in the program code progress was made, and to detect if subsequent input makes further progress into the code.  This allows dynamic adaptation and mutation of input to continue making further and further progress into the code.  This can be detected and logged as the total number of execution pathways into the code.</p>
+
+				<p>Userspace fuzzing such as AFL tests code running in the operating system's user space sandbox, which protects the system from system crashes and makes error detection relatively easy and painless. Input, usually, is a sequence of bytes.</p>
+
+				<p>Agamotto fuzzes in the kernel space, which has significantly more technical obstacles.  Virtual devices cannot be used, as you need to test the hardware directly.  Successfully detecting bugs usually crashes the machine.  This could lead to the loss of test data and the necessity of resetting or restoring the machine, which significantly slows the testing process. As a result, You cannot simply fork off new processes or use copy-on-write to minimize overhead. In addition, instead of the input being a sequence of bits, a kernel fuzzer sends a sequence of actions or system calls, which have a rigid format that is not not effectively explored using mutational fuzzing methods.</p>
+
+				<p>Motivation: How do you fuzz the kernel?</p>
+
+				<p>Google came up with their own proprietary methods, but we only have implementation details of open source methods. The simplest approach would be to send a sequence of syscalls and vary their arguments. Since you use random input and not sequential input, you generate different seeds for random number sequences.  This allows you to either replay particular tests again in the future, or pick different seeds for every trial to improve the chance of generating unexpected behavior or a software crash.</p>
+
+				<p>Kernel fuzzing tests long sequences of actions that change the system state. Imagine you have a base test case with 10,000,000 syscalls. While executing the syscalls the machine changes the contents of memory, accepts input, and writes output. Now, for testing, the fuzzer is focusing on the last syscall.  Thus, it would make more sense to set a checkpoint to the system state at syscall 9,999,999 and only execute the instructions that are changing from one test to another.</p>
+
+
+				<p>The purpose of these checkpoints is to create a noticeable speed up in kernel mode fuzzing operation.  In theory, this looks very simple to perform, but in practice a number of complications and additional implementation details need to be considered.</p>
+
+				<p><h5>Checkpoint Storage Data Structure</h5></p>
+
+				<p>Each checkpoint must represent a complete snapshot of the virtual machine at a particular point in time. This consists of 1) CPU state data 2) memory contents and 3) VM metadata.  In terms of size, the complete contents of RAM are huge. As a result, each checkpoint that contains a complete snapshot of memory creates a burden in both the amount of storage necessary to save the snapshot and in the amount of time it takes to restore the system.</p>
+
+				<p>An optimization to minimize this is to store only one initial static checkpoint with the complete contents of memory, and any additional checkpoints will only store the delta encoding differences between the contents of memory of that static checkpoint and any subsequent checkpoints.</p>
+
+
+				<p>The data structure used to store these checkpoints is a prefix tree or 'trie'.  The node that represents your checkpoint is represented by the branch of actions necessary to get to that particular node.  This allows us to find the best possible checkpoint in effectively linear time, as we traverse down the tree as far as possible to find the checkpoint that matches as much of the prefix of actions as possible.  This represents the checkpoint that allows us to skip the largest amount of work possible for that particular input.</p>
+
+				<p>Effective Checkpoint Policies</p>
+
+				<p>Creating too few checkpoints limits the cache hit rate.  Creating too many checkpoints wastes storage capacity and creates excessive checkpointing overhead, which will slow down the system as well. This makes it necessary to develop policies that will minimize the number of checkpoints created and effectively remove unused checkpoints from the cache.</p>
+
+				<p>Creation Policies:</p>
+
+				<p>1) Favoring checkpoints near the start of execution
+				<p>2) Increasing interval of checkpoints, according to the depth of the checkpoint tree
+				<p>3) Don't checkpoint mutations until they lead to further code coverage</p>
+
+				<p>Eviction Policies:</p>
+
+				<p>1) Scoring the value of the pathway as "interesting enough" or significant.  This means simply that the current active node and all of its parents are excluded from addiction
+				<p>2) Keeping nodes closer to the root with potentially more branches than leaves. This is implemented by simply excluding all nodes that contain child nodes and only examining leaf nodes
+				<p>3) Favoring checkpoints that have been used more recently.  Looking at all of the candidates not excluded by the previous 2 steps, the checkpoint that has been least recently used is evicted.</p>
+
+				<p>Efficient Checkpoint Restoration</p>
+
+				<p>Since the current system state is most likely more similar to the checkpoint than the original static checkpoint being stored, it is more efficient to restore the checkpoint by examining the difference between the current system state and the target state we want to restore, rather than go back to the original stored memory checkpoint.</p>
+
+				<p>This is performed in practice by traversing the tree from the current to the target state, and obtaining the most recent common ancestor. We then can take the union of all of the pages modified by our current state up to the common ancestor stage, which need to be restored, and then the pages from the common ancestor state down to the target state which need to be applied. This provides us with an optimized minimum number of actual pages that need to be changed.</p>
+
+				<p>Implementation</p>
+
+				<p>Agamotto uses system calls to implement kernel fuzzing, by using the same framework as syzkaller.  They use a high-level description language to describe exactly what to implement: for example, file type, return type, and exactly what syscalls you are willing to use in this particular instance.</p>
+
+
+				<p>The fuzzer is implemented outside of the virtual machine and interacts with the VM using a low-kernel interface where they interact through shared memory and use hypercalls.  They also use a fuzzing driver as seen here which interacts directly with the device drivers and guest agents within the virtual machine.</p>
+
+				<p>Agamotto has support for 3 different packages: qemu, hostvm, syzkaller.  Qemu implements snapshotting, however, the snapshot implementation has been modified as previously discussed.  Instead of implementing change-on-redirect, the authors have implemented change-on-write. Patches applied to syzkaller allow them to determine how often a checkpoint has been accessed and change the snapshot implementation as well. All of these requests are issued through hypercalls.</p>
+
+				<p>Working code for this can be found on https://github.com/securesystemslab/agamotto</p>
+
 
 			</div>
 

@@ -235,6 +235,10 @@ img {
   margin-bottom:2px;
   margin-top:20px;
 }
+.section h5{
+  margin-bottom:2px;
+  margin-top:10px;
+}
 /* team section */
 #team .row {
   margin: 5px;
