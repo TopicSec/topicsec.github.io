@@ -64,10 +64,10 @@ In Favor and Against
 
 
 
-## Error Categorization
+# Error Categorization
 They broke observed errors down into several types: no implementation, misunderstandings, and outright mistakes.
 
-### No Implementation
+## No Implementation
 No implementation errors were the simple case where a team did not even attempt to provide a required security feature, such as an implementation of secure log with no integrity checking.
 Within the umbrella of no implementation, they sub-divided further to consider *all intuitive*, *some intuitive*, and *unintuitive* separately.
 The first two categories comprise those missing features that were at least partially either mentioned in the specification or considered obvious from the requirements.
@@ -79,7 +79,7 @@ There were side channels leaking data in the secure communication and multiuser-
 Replay attacks could be used against some secure communication implementations.
 Finally, user rights were not properly checked in the case of delegation in the multiuser-database task.
 
-### Misunderstandings
+## Misunderstandings
 A vulnerability was categorized as a misunderstanding when a team attempted to implement security requirements, but made mistakes in doing so.
 These were further sub-divided into *bad choices* and *conceptual errors*.
 
@@ -95,13 +95,13 @@ Other issues categorized as conceptual errors included correct usage of security
 For instance, one team ensured integrity of individual log entries but not the log as a whole, ostensibly preventing modification of individual entries but allowing arbitrary deletion/duplication/reordering.
 Another example of this issue was the disabling of built-in protections; one team disabled automatic MAC usage in their SQL library.
 
-### Mistakes
+## Mistakes
 
 The final category of error is outright developer mistakes.
 Examples of this type of error include improper error handling leading to the application hanging or crashing.
 Other examples include control flow logic errors; one team failed to properly store data they later checked the presence of, leading to their check always returning the same resut.
 
-## Quantifying Exploitability
+# Quantifying Exploitability
 
 In addition to categorizing vulnerabilities introduced in the "build it" phase, the paper also categorizes the exploitation of these vulnerabilities.
 This is broken down into three different analyses: the difficulty of discovering the vulnerability, the difficulty of exploiting the vulnerability, and whether the vulnerability was actually exploited during the "break it" phase.
