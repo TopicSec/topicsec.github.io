@@ -72,9 +72,6 @@ As mentioned, the projects covering three programming problems:
 - How can we categorize programming errors?
 - How can we quantify errors' exploitability?
 
-## Error Categorization
-![](../assets/img/BBF_typeoferrors.png)
-
 # Error Categorization
 They broke observed errors down into several types: no implementation, misunderstandings, and outright mistakes.
 
@@ -134,6 +131,8 @@ Their conclusion is that although outright mistakes were less likely to make it 
 No significant differences between the rates of partial and full control after exploitation were found, although the authors note that vulnerabilities introduced through misunderstandings were observed to cede full control slightly more often than the other categories of error (70% vs. 61%, 51%).
 
 # results
+
+![](../assets/img/BBF_typeoferrors.png)
 
 ## types of errors
 
