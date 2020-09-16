@@ -13,7 +13,7 @@ In order to do this, they leveraged a Build It, Break It, Fix It competition to 
 Vulnerabilities were categorized according to how they were introduced, level of control they allowed, and how easily they could be exploited.
 Once the raw data was categorized, certain trends emerged: outright mistakes where the developer didn't implement what they meant to were relatively uncommon, while the most common type of vulnerability was that introduced through misconceptions of security concepts (API misuse, etc.).
 
-# backround & data
+# background & data
 
 This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It.
 
