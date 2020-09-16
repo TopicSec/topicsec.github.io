@@ -66,13 +66,10 @@ In Favor and Against
 
 
 
-<<<<<<< HEAD
 ## Error Categorization
 ![](../assets/img/BBF_typeoferrors.png)
 
-=======
 # Error Categorization
->>>>>>> 1935cfe04dc45d039963ce1703201b9c17946b07
 They broke observed errors down into several types: no implementation, misunderstandings, and outright mistakes.
 
 ## No Implementation
