@@ -17,6 +17,8 @@ Once the raw data was categorized, certain trends emerged: outright mistakes whe
 
 This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It. 
 
+![](../assets/img/BBF1.png)
+
 As it's name, it comprises three phases:
 
 - Build it
@@ -65,6 +67,8 @@ In Favor and Against
 
 
 ## Error Categorization
+![](../assets/img/BBF_typeoferrors.png)
+
 They broke observed errors down into several types: no implementation, misunderstandings, and outright mistakes.
 
 ### No Implementation
@@ -132,15 +136,6 @@ that big table in paper
 - practices (code review, testcases) work
 
 - no differences between professional and student
-  - discussion of measuring sec profession 35 min
-  - practical train/experience?
-    - errors are all in course slides
-    - they have 8 9 years dev experience
-    - CTF?
-    - team size/structure
-    - so how to train and measure?
-
-
 
 ## risk factors of attacker control,
 
@@ -197,32 +192,32 @@ Based on the results showed in the experiment, the paper suggest several possibl
 
 # discussion:
 
-in slides:
+Presentation team xxx presents several questions in slides to discuss:
 
-- how competition can measure this field more accurately
-
-- pro vs student
-
-- better static analysis tools
+![](../assets/img/BBF_discussoinquestion.png)
 
 
 
+During the presentation we also discuss about these interesting questions:
 
+- About the result shows there are no significant difference between professional and student errors
 
-in video:
+One of the reason might be whether there are enough practical security experience for the participants, because there are many differences between security training and certain actual experience, so it's hard to measure how "professional" a developer is, especially in security aspect. For example, a professional developer would still be very likely to make the same mistakes as students, if the project/language is new to him/her, or certain API or documentation is not safe by default, eg. for performance reason.
 
-- dynamic/semantic ways:
+Besides misunderstanding errors on specific cases, how can we measure the "professional" better in general? It's still an interesting problem to explore, maybe CTF background? 
 
-hardcoded aes iv, just one type
+Other than personal measurement, a team's size and structure could also affect. For example if the main contribution is from less people, it loses certain objective, and gets harder review code, etc.  
 
+- About static analysis tools failing at most cases
 
+Is it suggests possibilities of dynamic/semantic aware ways? For example, a hard coded AES IV problem is easy for static ways, what about similar problems but in dynamic ways more generally? Most papers from crypto area analysis are limited in one type of vulnerabilities.
 
-- no tools on design/conceptual level
+And on most errors mentioned in the paper, tools are failing at those design/logic level issues. For this kind of errors, does it have to require general intelligence like human? As more powerful AI techniques developing, such as GPT3, how to apply them into security field is a big topic. Similar effort on this from a CCS paper this year: it does NLP on library API and its document, to try to derive relationships and identify misuses. 
 
-GPT3? (hardcoded rules?) a ccs nlp paper
+- About results showing more high level, abstract bugs from popular language
 
+Would programming languages that are more popular cause more bugs? On one hand yes, popular means higher chances to get errors, or less popular indicates more professional developers; on the other hand, as the paper mentioned, the categories of vulnerabilities don't seems like language-related, such as "Unkeyed function", "No MAC", "No encryption", etc. 
 
+- Would this paper somehow restrict the follow up work?
 
-- that unapproachable disassembly paper problem
-
-follow up work
+Would this paper's result be abused, and be cited as "laws", to restrict the follow up direction?
