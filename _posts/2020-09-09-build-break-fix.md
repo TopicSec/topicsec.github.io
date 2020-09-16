@@ -140,17 +140,42 @@ mistake: easy to find and exploitable
 
 # recommendation
 
-- match CWE/OWSAP
+Based on the results showed in the experiment, the paper suggest several possible solutions:
 
-- hire
-- better API design
+- compare to real-world vulnerabilities
+
+  By compiling the list of vulnerabilities by exploring BIBIFI projects, the result shows that the list closely resembles both Mitre’s CWE and OWASP’s Top Ten lists, including: : broken authentication (e.g., insufficient randomness), broken access control, security misconfiguration (e.g., using an algorithm incorrectly or with the wrong default values), and sensitive data exposure (e.g. side-channel leak).
+
+  So suggestion for who want to find errors in real-world programs, it's natural and promising to start from the CWE and OWASP’s Top Ten lists.
+
+- hire a security expert
+
+  In some large organizations, developers working with cryptography and other security-specific features might be required to use security expert determine tools and patterns to use or have a security expert perform a review. The results reaffirm this practice, when possible, as participants were most likely to struggle with security concepts avoidable through expert review.
+
+- better secure API design 
+
+  The results support the basic idea that security controls are best applied transparently, e.g., using simple APIs. However, while many teams used APIs that provide security (e.g., encryption) transparently, they were still
+  frequently misused (e.g., failing to initialize using a unique IV
+  or failing to employ stream-based operation to avoid replay
+  attacks). So it may be beneficial to organize solutions around
+  general use cases, so that developers only need to know the
+  use case and not the security requirements.
+
 - better API docs
-- better education
-- better automatic tools
 
+  A example from the experiment, teams SC-18 and SC-19 used TLS socket libraries but did not enable client-side authentication. This kind of failure appears to have occurred because client-side authentication is disabled by default, but this fact is not mentioned in the documentation. 
 
+  So defaults within an API should be safe and without ambiguity, and better documentation would be helpful also form security side.
 
+- better security education
 
+  The authors note that many of the teams in our data had completed a cybersecurity MOOC prior to the competition. And all needed security controls for the problems were discussed in the lecture slides. But still a majority of teams failed to include Unintuitive requirements. 
+
+  An environment like BIBIFI, where developers practice implementing security concepts and receive feedback regarding mistakes, could help. Future work should consider how well competitors from one contest do in follow-on contests.
+
+- better analysis tools
+
+  The result shows that lots of popular automatic tools would not have applied to the majority of vulnerabilities they saw, which are often design-level, conceptual issues. An interesting question is how automation could be used to address security requirements at design time.
 
 
 
