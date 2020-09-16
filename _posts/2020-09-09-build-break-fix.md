@@ -203,7 +203,7 @@ Based on the results showed in the experiment, the paper suggest several possibl
 
 # discussion:
 
-Presentation team xxx presents several questions in slides to discuss:
+Presentation team Stapler presents several questions in slides to discuss:
 
 ![](../assets/img/BBF_discussoinquestion.png)
 
