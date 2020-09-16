@@ -46,16 +46,7 @@ As mentioned, the projects covering three programming problems:
 
 - Multiuser database
 
-### project selection
-
-
-
-### data gathered
-
-- secure log
-- secure communication
-- multiuser database
-- project characteristics
+  It ask teams to create a server that maintains a secure key-value store. Build-it performance is assessed by the domain-specific language running time. Optional features take the form of additional script commands.
 
 # research question
 
