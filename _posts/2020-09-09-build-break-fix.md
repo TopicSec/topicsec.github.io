@@ -13,7 +13,7 @@ In order to do this, they leveraged a Build It, Break It, Fix It competition to 
 Vulnerabilities were categorized according to how they were introduced, level of control they allowed, and how easily they could be exploited.
 Once the raw data was categorized, certain trends emerged: outright mistakes where the developer didn't implement what they meant to were relatively uncommon, while the most common type of vulnerability was that introduced through misconceptions of security concepts (API misuse, etc.).
 
-# background & data
+# Background & data
 
 This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It.
 
@@ -50,13 +50,13 @@ As mentioned, the projects covering three programming problems:
 
   It ask teams to create a server that maintains a secure key-value store. Build-it performance is assessed by the domain-specific language running time. Optional features take the form of additional script commands.
 
-# research question
+# Research question
 
 1. What types of vulnerabilities do developers introduce? Are they conceptual flaws in their understanding of security requirements or coding mistakes?
 2. How much control does an attacker gain by exploiting the vulnerabilities, what is the effect?
 3. How exploitable are the vulnerabilities? What level of insights is required and how much work is necessary? 
 
-# methodology question
+# Methodology question
 
 - Is that sample of projects representative of real world?
 
@@ -79,7 +79,7 @@ They broke observed errors down into several types: no implementation, misunders
 No implementation errors were the simple case where a team did not even attempt to provide a required security feature, such as an implementation of secure log with no integrity checking.
 Within the umbrella of no implementation, they sub-divided further to consider *all intuitive*, *some intuitive*, and *unintuitive* separately.
 The first two categories comprise those missing features that were at least partially either mentioned in the specification or considered obvious from the requirements.
-The last category, unintuitive, comprised errors where the required security feature was not explictly stated or intuitive, such as the need to use MACs to ensure integrity.
+The last category, unintuitive, comprised errors where the required security feature was not explicitly stated or intuitive, such as the need to use MACs to ensure integrity.
 Examples of *all intuitive* errors were not using encryption in the secure log and secure communication tasks, as well as not attempting to enforce the access control aspect of the multiuser-database task.
 Some teams only partially implemented these access control requirements which was coded as *some intuitive*.
 The *unintuitive* errors were more varied. Teams failed to use MACs to ensure integrity in the secure log and secure communication tasks.
@@ -94,11 +94,11 @@ These were further sub-divided into *bad choices* and *conceptual errors*.
 Bad choices represent inherently insecure choices, of which five distinct instances were observed.
 Of note among these was the use of bespoke encryption; one team chunked cleartext by the key length and XORed these chunks with the key, trivially allowing the key to be recovered from two blocks of the ciphertext.
 Another common issue was using functions that could compromise memory safety, such as using `strcpy`.
-The authors chose to class this is a bad choice rather than an outright mistake due the the existence of `strlcpy`.
+The authors chose to class this is a bad choice rather than an outright mistake due to the existence of `strlcpy`.
 
 Conceptual errors represent the misuse of not-inherently-insecure mechanisms.
-For example, crytographic algorithms often require random values as initialization and may harm security if not actually random.
-Hardcoding passwords was also classified as a conceptual error.
+For example, cryptographic algorithms often require random values as initialization and may harm security if not actually random.
+Hard-coding passwords was also classified as a conceptual error.
 Other issues categorized as conceptual errors included correct usage of security features while failing to protect everything needed to provide security.
 For instance, one team ensured integrity of individual log entries but not the log as a whole, ostensibly preventing modification of individual entries but allowing arbitrary deletion/duplication/reordering.
 Another example of this issue was the disabling of built-in protections; one team disabled automatic MAC usage in their SQL library.
@@ -107,7 +107,7 @@ Another example of this issue was the disabling of built-in protections; one tea
 
 The final category of error is outright developer mistakes.
 Examples of this type of error include improper error handling leading to the application hanging or crashing.
-Other examples include control flow logic errors; one team failed to properly store data they later checked the presence of, leading to their check always returning the same resut.
+Other examples include control flow logic errors; one team failed to properly store data they later checked the presence of, leading to their check always returning the same result.
 
 # Quantifying Exploitability
 
@@ -115,7 +115,7 @@ In addition to categorizing vulnerabilities introduced in the "build it" phase, 
 This is broken down into three different analyses: the difficulty of discovering the vulnerability, the difficulty of exploiting the vulnerability, and whether the vulnerability was actually exploited during the "break it" phase.
 
 Difficulty in discovery was broken into two groups: "easy" discoveries, those requiring only execution, such as observing a segfault and then looking for a buffer overflow, and "hard" discoveries, those requiring either access to the source or deep insight into the design and implementation.
-Likewise, difficulty in exploitation was broken into groups: "easy" exploits require only a single step or a few steps to exploit, "hard" exploits require many steps and may be probablistic.
+Likewise, difficulty in exploitation was broken into groups: "easy" exploits require only a single step or a few steps to exploit, "hard" exploits require many steps and may be probabilistic.
 
 Their analysis rated errors introduced through misunderstandings as hard to discover, as they often rested on the attacker having a good idea of the process taken by the original developer.
 However, the rates of actual exploitation in the "break it" phase did not show that misunderstandings resulted in exploitation significantly more often.
@@ -130,37 +130,40 @@ Their conclusion is that although outright mistakes were less likely to make it 
 
 No significant differences between the rates of partial and full control after exploitation were found, although the authors note that vulnerabilities introduced through misunderstandings were observed to cede full control slightly more often than the other categories of error (70% vs. 61%, 51%).
 
-# results
+# Results
 
 ![](../assets/img/BBF_typeoferrors.png)
 
-## types of errors
+## Types of errors
 
-that big table in paper
+![error table](../assets/img/BBF_errorTable.png)
 
-## risk factors of errors prevalence
+## Risk factors of errors prevalence
 
-- skip unintuitive
-
-- more errors in popular language
-
-- practices (code review, testcases) work
-
-- no differences between professional and student
-
-## risk factors of attacker control,
-
-report by teams:
-
-no implement: easy to find
-
-misunderstand: hard
-
-mistake: easy to find and exploitable
+  Teams that used more popular languages had a higher prevalence of errors.  However, this may be related to experience, as less experienced participants are likely to prefer popular languages.
+  There was no significant difference in errors introduced by student participants compared to professional participants.
 
 
+## Risk factors of attacker control
 
-# recommendation
+Vulnerability impact was separated into two different categories: discovery difficulty and exploit difficulty.
+
+- Discovery Difficulty
+
+  _no implementation_  and _mistake_ errors were easy to find.  Conversely _Misunderstandings_ were difficult to identify.  This is attributed to additional knowledge required by an attacker to identify the error.
+
+- Exploit Difficulty
+
+  The _intuitive_ and _some intuitive_ _No Implementation_ errors were rated as not difficult to exploit.  The _unintuitive_ _no implementation_ errors presented a greater challenge.
+  The _misunderstanding_ errors were not significantly more difficult to exploit once found.
+
+- Attacker Control
+
+  No significant difference was found between the error types with respect to attacker control.  The BIBIFI challenge did not reward differing point values based upon attacker control levels.
+  The data does indicate that _misunderstanding_ errors result in full attacker control more often then _no implementation_ or _Mistake_ errors.
+
+
+# Recommendation
 
 Based on the results showed in the experiment, the paper suggest several possible solutions:
 
@@ -201,7 +204,7 @@ Based on the results showed in the experiment, the paper suggest several possibl
 
 
 
-# discussion:
+# Discussion:
 
 Presentation team Stapler presents several questions in slides to discuss:
 
