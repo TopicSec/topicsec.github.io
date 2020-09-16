@@ -52,19 +52,25 @@ As mentioned, the projects covering three programming problems:
 
 # research question
 
-vuln types: conceptual mistakes
-
-how much control gain
-
-require to exploit
+1. What types of vulnerabilities do developers introduce? Are they conceptual flaws in their understanding of security requirements or coding mistakes?
+2. How much control does an attacker gain by exploiting the vulnerabilities, what is the effect?
+3. How exploitable are the vulnerabilities? What level of insights is required and how much work is necessary? 
 
 # methodology question
 
-- representative of real world?
+- Is that sample of projects representative of real world?
 
-In Favor and Against
+  - Yes: 
+    - The competition's scoring format matches real world incentives
+    - The project task are big and complicated
+    - The participants are experienced developers and students who were taking corresponding security class
+  - No:
+    - Time pressure is hard to simulate
+    - Only three type of project tasks
+    - Teams know it's a security competition, so they may prioritize security
 
-
+- How can we categorize programming errors?
+- How can we quantify errors' exploitability?
 
 ## Error Categorization
 ![](../assets/img/BBF_typeoferrors.png)
