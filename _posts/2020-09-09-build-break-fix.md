@@ -15,7 +15,7 @@ Once the raw data was categorized, certain trends emerged: outright mistakes whe
 
 # backround & data
 
-This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It. 
+This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It.
 
 As it's name, it comprises three phases:
 
@@ -37,7 +37,7 @@ As mentioned, the projects covering three programming problems:
 
 - Secure log
 
-  It includes securely appending records to a log and securely querying the log. The build it score is measured by log query/append latency and space utilization. 
+  It includes securely appending records to a log and securely querying the log. The build it score is measured by log query/append latency and space utilization.
 
 - Secure communication
 
@@ -101,21 +101,26 @@ The final category of error is outright developer mistakes.
 Examples of this type of error include improper error handling leading to the application hanging or crashing.
 Other examples include control flow logic errors; one team failed to properly store data they later checked the presence of, leading to their check always returning the same resut.
 
-## quantify exploitable
+## Quantifying Exploitability
 
-discovery difficulties
+In addition to categorizing vulnerabilities introduced in the "build it" phase, the paper also categorizes the exploitation of these vulnerabilities.
+This is broken down into three different analyses: the difficulty of discovering the vulnerability, the difficulty of exploiting the vulnerability, and whether the vulnerability was actually exploited during the "break it" phase.
 
-- require execution
+Difficulty in discovery was broken into two groups: "easy" discoveries, those requiring only execution, such as observing a segfault and then looking for a buffer overflow, and "hard" discoveries, those requiring either access to the source or deep insight into the design and implementation.
+Likewise, difficulty in exploitation was broken into groups: "easy" exploits require only a single step or a few steps to exploit, "hard" exploits require many steps and may be probablistic.
 
-- require source code
+Their analysis rated errors introduced through misunderstandings as hard to discover, as they often rested on the attacker having a good idea of the process taken by the original developer.
+However, the rates of actual exploitation in the "break it" phase did not show that misunderstandings resulted in exploitation significantly more often.
 
-- require insights on key algorithm
+Conversely, "no implementation" errors were rated as easy to find, as they could usually be discovered by checking for the necessary mechanisms (i.e. an integrity check, or any mechanism to enforce access control).
+While none of the whole or partially "intuitive" vulnerabilities (those directly implied by the specification) were rated as hard to exploit, nearly half of the "unintuitive" vulnerabilities were.
+An example given in the paper is the lack of MACs in the secure log task; it is quite easy to discover that MACs are not in use, but one implementation was still not exploited despite this lack.
+Their implementation encrypted data after serializing to JSON and any modifications to the non-integrity-checked encrypted data had to maintain that structure in order to successfully deserialize.
 
-exploit difficulties
+Vulnerabilities classed as mistakes were rated as both easy to find and easy to exploit, which was born out by the actual data from the "break it" phase: there was only one vulnerability resulting from a mistake that was *not* exploited by any team.
+Their conclusion is that although outright mistakes were less likely to make it through the development process, those that did were highly likely to be discovered and exploited.
 
-
-
-
+No significant differences between the rates of partial and full control after exploitation were found, although the authors note that vulnerabilities introduced through misunderstandings were observed to cede full control slightly more often than the other categories of error (70% vs. 61%, 51%).
 
 # results
 
