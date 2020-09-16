@@ -9,13 +9,13 @@ pin: true
 
 ## Abstract
 This paper aims to study and categorize the various types of mistakes developers make regarding security.
-In order to do this, they leveraged a Build It, Break It, Fix It competition to obtain data on the introduction of errors and their subsequent fixes.
+In order to do this, they leveraged a Build It, Break It, Fix It competition to obtain data on the introduction of errors as well as their exploitation and subsequent fixes.
 Vulnerabilities were categorized according to how they were introduced, level of control they allowed, and how easily they could be exploited.
 Once the raw data was categorized, certain trends emerged: outright mistakes where the developer didn't implement what they meant to were relatively uncommon, while the most common type of vulnerability was that introduced through misconceptions of security concepts (API misuse, etc.).
 
-# backround & data
+# background & data
 
-This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It. 
+This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It.
 
 ![](../assets/img/BBF1.png)
 
@@ -39,7 +39,7 @@ As mentioned, the projects covering three programming problems:
 
 - Secure log
 
-  It includes securely appending records to a log and securely querying the log. The build it score is measured by log query/append latency and space utilization. 
+  It includes securely appending records to a log and securely querying the log. The build it score is measured by log query/append latency and space utilization.
 
 - Secure communication
 
@@ -66,12 +66,16 @@ In Favor and Against
 
 
 
+<<<<<<< HEAD
 ## Error Categorization
 ![](../assets/img/BBF_typeoferrors.png)
 
+=======
+# Error Categorization
+>>>>>>> 1935cfe04dc45d039963ce1703201b9c17946b07
 They broke observed errors down into several types: no implementation, misunderstandings, and outright mistakes.
 
-### No Implementation
+## No Implementation
 No implementation errors were the simple case where a team did not even attempt to provide a required security feature, such as an implementation of secure log with no integrity checking.
 Within the umbrella of no implementation, they sub-divided further to consider *all intuitive*, *some intuitive*, and *unintuitive* separately.
 The first two categories comprise those missing features that were at least partially either mentioned in the specification or considered obvious from the requirements.
@@ -83,7 +87,7 @@ There were side channels leaking data in the secure communication and multiuser-
 Replay attacks could be used against some secure communication implementations.
 Finally, user rights were not properly checked in the case of delegation in the multiuser-database task.
 
-### Misunderstandings
+## Misunderstandings
 A vulnerability was categorized as a misunderstanding when a team attempted to implement security requirements, but made mistakes in doing so.
 These were further sub-divided into *bad choices* and *conceptual errors*.
 
@@ -99,27 +103,32 @@ Other issues categorized as conceptual errors included correct usage of security
 For instance, one team ensured integrity of individual log entries but not the log as a whole, ostensibly preventing modification of individual entries but allowing arbitrary deletion/duplication/reordering.
 Another example of this issue was the disabling of built-in protections; one team disabled automatic MAC usage in their SQL library.
 
-### Mistakes
+## Mistakes
 
 The final category of error is outright developer mistakes.
 Examples of this type of error include improper error handling leading to the application hanging or crashing.
 Other examples include control flow logic errors; one team failed to properly store data they later checked the presence of, leading to their check always returning the same resut.
 
-## quantify exploitable
+# Quantifying Exploitability
 
-discovery difficulties
+In addition to categorizing vulnerabilities introduced in the "build it" phase, the paper also categorizes the exploitation of these vulnerabilities.
+This is broken down into three different analyses: the difficulty of discovering the vulnerability, the difficulty of exploiting the vulnerability, and whether the vulnerability was actually exploited during the "break it" phase.
 
-- require execution
+Difficulty in discovery was broken into two groups: "easy" discoveries, those requiring only execution, such as observing a segfault and then looking for a buffer overflow, and "hard" discoveries, those requiring either access to the source or deep insight into the design and implementation.
+Likewise, difficulty in exploitation was broken into groups: "easy" exploits require only a single step or a few steps to exploit, "hard" exploits require many steps and may be probablistic.
 
-- require source code
+Their analysis rated errors introduced through misunderstandings as hard to discover, as they often rested on the attacker having a good idea of the process taken by the original developer.
+However, the rates of actual exploitation in the "break it" phase did not show that misunderstandings resulted in exploitation significantly more often.
 
-- require insights on key algorithm
+Conversely, "no implementation" errors were rated as easy to find, as they could usually be discovered by checking for the necessary mechanisms (i.e. an integrity check, or any mechanism to enforce access control).
+While none of the whole or partially "intuitive" vulnerabilities (those directly implied by the specification) were rated as hard to exploit, nearly half of the "unintuitive" vulnerabilities were.
+An example given in the paper is the lack of MACs in the secure log task; it is quite easy to discover that MACs are not in use, but one implementation was still not exploited despite this lack.
+Their implementation encrypted data after serializing to JSON and any modifications to the non-integrity-checked encrypted data had to maintain that structure in order to successfully deserialize.
 
-exploit difficulties
+Vulnerabilities classed as mistakes were rated as both easy to find and easy to exploit, which was born out by the actual data from the "break it" phase: there was only one vulnerability resulting from a mistake that was *not* exploited by any team.
+Their conclusion is that although outright mistakes were less likely to make it through the development process, those that did were highly likely to be discovered and exploited.
 
-
-
-
+No significant differences between the rates of partial and full control after exploitation were found, although the authors note that vulnerabilities introduced through misunderstandings were observed to cede full control slightly more often than the other categories of error (70% vs. 61%, 51%).
 
 # results
 
@@ -163,7 +172,7 @@ Based on the results showed in the experiment, the paper suggest several possibl
 
   In some large organizations, developers working with cryptography and other security-specific features might be required to use security expert determine tools and patterns to use or have a security expert perform a review. The results reaffirm this practice, when possible, as participants were most likely to struggle with security concepts avoidable through expert review.
 
-- better secure API design 
+- better secure API design
 
   The results support the basic idea that security controls are best applied transparently, e.g., using simple APIs. However, while many teams used APIs that provide security (e.g., encryption) transparently, they were still
   frequently misused (e.g., failing to initialize using a unique IV
@@ -174,13 +183,13 @@ Based on the results showed in the experiment, the paper suggest several possibl
 
 - better API docs
 
-  A example from the experiment, teams SC-18 and SC-19 used TLS socket libraries but did not enable client-side authentication. This kind of failure appears to have occurred because client-side authentication is disabled by default, but this fact is not mentioned in the documentation. 
+  A example from the experiment, teams SC-18 and SC-19 used TLS socket libraries but did not enable client-side authentication. This kind of failure appears to have occurred because client-side authentication is disabled by default, but this fact is not mentioned in the documentation.
 
   So defaults within an API should be safe and without ambiguity, and better documentation would be helpful also form security side.
 
 - better security education
 
-  The authors note that many of the teams in our data had completed a cybersecurity MOOC prior to the competition. And all needed security controls for the problems were discussed in the lecture slides. But still a majority of teams failed to include Unintuitive requirements. 
+  The authors note that many of the teams in our data had completed a cybersecurity MOOC prior to the competition. And all needed security controls for the problems were discussed in the lecture slides. But still a majority of teams failed to include Unintuitive requirements.
 
   An environment like BIBIFI, where developers practice implementing security concepts and receive feedback regarding mistakes, could help. Future work should consider how well competitors from one contest do in follow-on contests.
 
