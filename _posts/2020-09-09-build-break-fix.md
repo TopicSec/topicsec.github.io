@@ -15,11 +15,36 @@ Once the raw data was categorized, certain trends emerged: outright mistakes whe
 
 # backround & data
 
-based on a secure programming competition
+This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It. 
 
-- 3 phases, build/break/fix
+As it's name, it comprises three phases:
+
+- Build it
+
+  Participating teams are given two weeks to build a project, for either a secure event-logging system, a secure communication system simulating an ATM and a bank, or a scriptable key-value store with role-based access control policies. They must meet a core set of functionality requirements, but teams may optionally implement additional features for more points.
+
+- Break it
+
+  In this phase, teams are given access to the source code of their fellow competitors’ projects to look for vulnerabilities and create a test case to prove the vulnerabilities (POC). Breaks are validated in different ways: comparing the output against a "known correct" reference implementation; or confirming leak of sensitive data.
+
+- Fix it
+
+  The final phase for teams is to fix those bugs, in order to identify essential same breaks to prevent double counted scores.
 
  ## data
+
+As mentioned, the projects covering three programming problems:
+
+- Secure log
+
+  It includes securely appending records to a log and securely querying the log. The build it score is measured by log query/append latency and space utilization. 
+
+- Secure communication
+
+  A pair of client/server programs, represent a bank and an ATM which
+  initiates account transactions. Build-it performance is measured by transaction latency. There are no optional features.
+
+- Multiuser database
 
 ### project selection
 
