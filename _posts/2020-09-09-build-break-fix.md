@@ -132,12 +132,12 @@ No significant differences between the rates of partial and full control after e
 
 # Results
 
-![](../assets/img/BBF_typeoferrors.png)
+![](/assets/img/BBF_typeoferrors.png)
 
 
 ## Types of errors
 
-![error table](../assets/img/BBF_errorTable.png)
+![error table](/assets/img/BBF_errorTable.png)
 
 ## Risk factors of errors prevalence
 
@@ -209,7 +209,7 @@ Based on the results showed in the experiment, the paper suggest several possibl
 
 Presentation team Stapler presents several questions in slides to discuss:
 
-![](../assets/img/BBF_discussoinquestion.png)
+![](/assets/img/BBF_discussoinquestion.png)
 
 
 
