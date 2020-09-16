@@ -33,7 +33,7 @@ As it's name, it comprises three phases:
 
   The final phase for teams is to fix those bugs, in order to identify essential same breaks to prevent double counted scores.
 
- ## data
+## Data
 
 As mentioned, the projects covering three programming problems:
 
@@ -133,6 +133,7 @@ No significant differences between the rates of partial and full control after e
 # Results
 
 ![](../assets/img/BBF_typeoferrors.png)
+
 
 ## Types of errors
 
