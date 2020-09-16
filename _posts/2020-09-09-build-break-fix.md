@@ -17,7 +17,7 @@ Once the raw data was categorized, certain trends emerged: outright mistakes whe
 
 This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It.
 
-![](../assets/img/BBF1.png)
+![](/assets/img/BBF1.png)
 
 As it's name, it comprises three phases:
 
