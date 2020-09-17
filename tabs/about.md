@@ -13,4 +13,4 @@ community. This year we have three teams:
 
 All the teams are comprised of graduate students, as well as any SEFCOM
 bystanders that wandered into the reading groups. We hope you enjoy the content
-here 
+here.
