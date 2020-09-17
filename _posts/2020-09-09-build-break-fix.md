@@ -138,11 +138,11 @@ No significant differences between the rates of partial and full control after e
 
 # Results
 
+## Types of errors
 ![](/assets/img/BBF_typeoferrors.png)
 
 
-## Types of errors
-
+## Detailed Results
 ![error table](/assets/img/BBF_errorTable.png)
 
 ## Risk factors of errors prevalence
