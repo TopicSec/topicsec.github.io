@@ -2,7 +2,7 @@
 title: Security Mistakes Developers Make
 author: Team Fable
 date: 2020-09-09
-categories: []
+categories: [qualitative]
 tags: [qualitative, mistakes]
 pin: true
 ---
