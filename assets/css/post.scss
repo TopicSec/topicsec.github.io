@@ -42,6 +42,9 @@ $prompt-newer: "{{ site.data.label.post.button.next }}";
       margin: 1rem 0 0.8rem;
     }
   }
+  h2, h3 {
+      color: rgb(116, 178, 243);
+  }
   .post-preview-img {
     margin-top: 0;
     margin-bottom: 2.5rem;
