@@ -7,13 +7,19 @@ tags: [qualitative, mistakes]
 pin: true
 ---
 
+## Paper Info
+- **Paper Name**: Understanding security mistakes developers make: Qualitative analysis from Build It, Break It, Fix It
+- **Conference**: USENIX Security '20
+- **Author List**: Daniel Votipka, Kelsey R. Fulton, James Parker, Matthew Hou, Michelle L. Mazurek, and Michael Hicks
+- **Link to Paper**: [here](https://www.usenix.org/system/files/sec20-votipka-understanding.pdf)
+
 ## Abstract
 This paper aims to study and categorize the various types of mistakes developers make regarding security.
 In order to do this, they leveraged a Build It, Break It, Fix It competition to obtain data on the introduction of errors as well as their exploitation and subsequent fixes.
 Vulnerabilities were categorized according to how they were introduced, level of control they allowed, and how easily they could be exploited.
 Once the raw data was categorized, certain trends emerged: outright mistakes where the developer didn't implement what they meant to were relatively uncommon, while the most common type of vulnerability was that introduced through misconceptions of security concepts (API misuse, etc.).
 
-# Background & data
+# Background & Data
 
 This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It.
 
