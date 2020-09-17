@@ -7,19 +7,19 @@ tags: [qualitative, mistakes]
 pin: true
 ---
 
-# Paper Info
+## Paper Info
 - **Paper Name**: Understanding security mistakes developers make: Qualitative analysis from Build It, Break It, Fix It
 - **Conference**: USENIX Security '20
 - **Author List**: Daniel Votipka, Kelsey R. Fulton, James Parker, Matthew Hou, Michelle L. Mazurek, and Michael Hicks
 - **Link to Paper**: [here](https://www.usenix.org/system/files/sec20-votipka-understanding.pdf)
 
-# Abstract
+## Abstract
 This paper aims to study and categorize the various types of mistakes developers make regarding security.
 In order to do this, they leveraged a Build It, Break It, Fix It competition to obtain data on the introduction of errors as well as their exploitation and subsequent fixes.
 Vulnerabilities were categorized according to how they were introduced, level of control they allowed, and how easily they could be exploited.
 Once the raw data was categorized, certain trends emerged: outright mistakes where the developer didn't implement what they meant to were relatively uncommon, while the most common type of vulnerability was that introduced through misconceptions of security concepts (API misuse, etc.).
 
-# Background & Data
+## Background & Data
 
 This paper presents a systematic, in-depth examination of vulnerabilities present in software projects. based on a secure programming competition: Build It, Break It, Fix It.
 
@@ -39,7 +39,7 @@ As it's name, it comprises three phases:
 
   The final phase for teams is to fix those bugs, in order to identify essential same breaks to prevent double counted scores.
 
-## Data
+### Data
 
 As mentioned, the projects covering three programming problems:
 
@@ -56,13 +56,13 @@ As mentioned, the projects covering three programming problems:
 
   It ask teams to create a server that maintains a secure key-value store. Build-it performance is assessed by the domain-specific language running time. Optional features take the form of additional script commands.
 
-# Research question
+## Research question
 
 1. What types of vulnerabilities do developers introduce? Are they conceptual flaws in their understanding of security requirements or coding mistakes?
 2. How much control does an attacker gain by exploiting the vulnerabilities, what is the effect?
 3. How exploitable are the vulnerabilities? What level of insights is required and how much work is necessary? 
 
-# Methodology question
+## Methodology question
 
 - Is that sample of projects representative of real world?
 
@@ -78,10 +78,10 @@ As mentioned, the projects covering three programming problems:
 - How can we categorize programming errors?
 - How can we quantify errors' exploitability?
 
-# Error Categorization
+## Error Categorization
 They broke observed errors down into several types: no implementation, misunderstandings, and outright mistakes.
 
-## No Implementation
+### No Implementation
 No implementation errors were the simple case where a team did not even attempt to provide a required security feature, such as an implementation of secure log with no integrity checking.
 Within the umbrella of no implementation, they sub-divided further to consider *all intuitive*, *some intuitive*, and *unintuitive* separately.
 The first two categories comprise those missing features that were at least partially either mentioned in the specification or considered obvious from the requirements.
@@ -93,7 +93,7 @@ There were side channels leaking data in the secure communication and multiuser-
 Replay attacks could be used against some secure communication implementations.
 Finally, user rights were not properly checked in the case of delegation in the multiuser-database task.
 
-## Misunderstandings
+### Misunderstandings
 A vulnerability was categorized as a misunderstanding when a team attempted to implement security requirements, but made mistakes in doing so.
 These were further sub-divided into *bad choices* and *conceptual errors*.
 
@@ -109,13 +109,13 @@ Other issues categorized as conceptual errors included correct usage of security
 For instance, one team ensured integrity of individual log entries but not the log as a whole, ostensibly preventing modification of individual entries but allowing arbitrary deletion/duplication/reordering.
 Another example of this issue was the disabling of built-in protections; one team disabled automatic MAC usage in their SQL library.
 
-## Mistakes
+### Mistakes
 
 The final category of error is outright developer mistakes.
 Examples of this type of error include improper error handling leading to the application hanging or crashing.
 Other examples include control flow logic errors; one team failed to properly store data they later checked the presence of, leading to their check always returning the same result.
 
-# Quantifying Exploitability
+## Quantifying Exploitability
 
 In addition to categorizing vulnerabilities introduced in the "build it" phase, the paper also categorizes the exploitation of these vulnerabilities.
 This is broken down into three different analyses: the difficulty of discovering the vulnerability, the difficulty of exploiting the vulnerability, and whether the vulnerability was actually exploited during the "break it" phase.
@@ -136,22 +136,22 @@ Their conclusion is that although outright mistakes were less likely to make it 
 
 No significant differences between the rates of partial and full control after exploitation were found, although the authors note that vulnerabilities introduced through misunderstandings were observed to cede full control slightly more often than the other categories of error (70% vs. 61%, 51%).
 
-# Results
+## Results
 
-## Types of errors
+### Types of errors
 ![](/assets/img/BBF_typeoferrors.png)
 
 
-## Detailed Results
+### Detailed Results
 ![error table](/assets/img/BBF_errorTable.png)
 
-## Risk factors of errors prevalence
+### Risk factors of errors prevalence
 
   Teams that used more popular languages had a higher prevalence of errors.  However, this may be related to experience, as less experienced participants are likely to prefer popular languages.
   There was no significant difference in errors introduced by student participants compared to professional participants.
 
 
-## Risk factors of attacker control
+### Risk factors of attacker control
 
 Vulnerability impact was separated into two different categories: discovery difficulty and exploit difficulty.
 
@@ -170,7 +170,7 @@ Vulnerability impact was separated into two different categories: discovery diff
   The data does indicate that _misunderstanding_ errors result in full attacker control more often then _no implementation_ or _Mistake_ errors.
 
 
-# Recommendation
+## Recommendation
 
 Based on the results showed in the experiment, the paper suggest several possible solutions:
 
@@ -211,7 +211,7 @@ Based on the results showed in the experiment, the paper suggest several possibl
 
 
 
-# Discussion:
+## Discussion:
 
 Presentation team Stapler presents several questions in slides to discuss:
 
