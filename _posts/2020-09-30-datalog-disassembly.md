@@ -12,8 +12,10 @@ pin: true
 - **Conference**: USENIX Security '20
 - **Author List**: Antonio Flores-Montoya and Eric Schulte, GrammaTech Inc.
 - **Link to Paper**: [here](https://www.usenix.org/system/files/sec20-flores-montoya.pdf)
+- **Team**: Team Stapler
+- **Food**: Pairs well with cookies 
 
-# Datalog Disassembly (pairs well with cookies)
+# Datalog Disassembly 
 
 
 ## Abstract
