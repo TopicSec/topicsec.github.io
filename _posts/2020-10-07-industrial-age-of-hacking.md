@@ -226,9 +226,7 @@ Both teams produced more materials using breadth-first search over depth-first s
 Our discussion on this paper went down many paths during the course of meeting. This summarizes the main points that we talked about.
 
 ## Criticism
-The first thing we talked about was that this paper's evaluation may **not represent the real world of vulnerability hunters**. In the real world, you don't search for bugs for only 10 days, and you most certainly don't DFS for only 5 days. When comparing DFS and BFS in such a short period, of course BFS will win in finding **more** bugs, but these bugs are often less impactful. The paper does not address this issue in it's evaluation. Often in the real world you DFS for months on a single target. In some way we felt a comparison of bugs may have been warranted to distinguish the impact of the bugs.
-
-![](/assets/img/industrial_results1.png)
+The first thing we talked about was that this paper's evaluation may **not represent the real world of vulnerability hunters**. In the real world, you don't search for bugs for only 10 days, and you most certainly don't DFS for only 5 days. When comparing DFS and BFS in such a short period, of course BFS will win in finding **more** bugs, but these bugs are often less impactful. The paper does not address this issue in it's evaluation. Often in the real world you DFS for months on a single target. In some way we felt a comparison of bugs may have been warranted to distinguish the impact of the bugs. This can be seen in the graph above in [Materials Produced](#materials-produced) section.
 
 Continuing on this idea, the authors measure success from teams in terms of bug creates and materials created from these two methods. We feel it was important again to mention that simply because another group created more materials, does not mean the materials were useful. A better method for measure material output would be measure the amount of materials generated that **were used by expert level hackers to find bugs**. Simply comparing general materials is not a good way of showing if any of the material was useful for research towards discovering a bug. 
 
