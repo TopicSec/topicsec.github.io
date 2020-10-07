@@ -90,3 +90,62 @@ To increase breadth even further, the described process stops all work on a targ
 The authors provide several ideas for increasing the number of targets, including breaking down targets into multiple smaller targets and transitively considering the dependencies of a target.
 Another benefit pointed out by the paper is that a much larger queue of potential targets allows new team members the freedom to select targets compatible with tools they are already familiar with.
 The process of handing off targets to more-skilled hackers also provides a feedback mechanism for those attempting to improve their skills: a more skilled hacker will pick up where they left off and document their approach to resolving whatever difficulties forced earlier hackers to move on.
+
+# Experiment
+
+## Subjects
+
+15 subjects are selected from US Cyber Command personnel, with these basic requirements:
+
+- had experience with Linux
+- could work with open source projects
+- could conduct Internet-based research
+- could read/write C programs
+
+and the distribution of the original 15 applicants contained: 8 subjects under 1 year of experience, 2 subjects between 1-2 years, 2 with 4 years, 2 with 5 years, and 1 subject who reported 8 years experience.
+
+### Orientation
+
+They provided orientation and skill assessment to 12 subjects during the experiment.
+
+On the first day, they provided introductions of popular fuzzing tool, AFL, combined with a lecture with exercises includes compiling by *afl-gcc*, fuzzing *bzip2* with *afl-qemu* and *Docker*.
+
+We administered these skill assessments three times:
+
+- immediately after the initial training course, 
+
+- at the half-way mark (before the teams exchanged strategies),
+- at the end of the experiment. 
+
+The aim was to measure the amount of skill our subjects developed
+during the course of executing each strategy.
+
+The content of assessments consist a set of different five binaries with two goals: create fuzzing harnesses and find bugs, in exactly one hour time.
+
+## Targets
+
+![](/assets/img/2020-10-07-industrial-age-of-hacking/binaries.jpg)
+
+They chose OpenWrt packages as benchmark. For groups working with Depth-first strategy, their targets are *dropbear* and *uhttpd*. For Breadth-first targets, subjects could choose any one in OpenWrt packages except  *dropbear* and *uhttpd*.
+
+Note that this strategy of target selection could lead to bias on the number of found bugs, naturally more targets would lead to more bugs. The author argue that: *this perceived unfairness is really intuition that Breadth-first is more effective than Depth-first strategy*.
+
+### work flows & tools
+
+![](/assets/img/2020-10-07-industrial-age-of-hacking/gitlab.png)
+
+They use Gitlab project/issue to manage teamwork. A project's status consisted types of *open, information gathering, program understanding, exploration, and journeyman*, with following working steps:
+
+- start a target by dragging a ticket from *open* to *information gathering*
+- append to an issue relevant articles, blogs, source repositories, corpora, and other information uncovered during their search
+- move an issue from *information gathering* to *program understanding* when subjects start to create products in Gitlab repo
+- move an issue to the *exploration* list upon creating working fuzzing harness
+-  move an issue to the *journeymen* list if progress becomes too difﬁcult.
+
+The workstations contained tools including: *Ghidra, AFL, Honggfuzz, Docker and Mayhem.* 
+
+## Execution
+
+![](/assets/img/2020-10-07-industrial-age-of-hacking/workflow.jpg)
+
+The experiment involved two iterations. During each iteration, each team applied different strategies for one hour, then they exchanged strategies and completed corresponding assessments and surveys.
