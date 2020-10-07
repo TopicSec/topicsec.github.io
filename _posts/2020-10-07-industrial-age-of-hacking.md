@@ -222,12 +222,24 @@ Both teams produced more materials using breadth-first search over depth-first s
 
 ![](/assets/img/TIAH - materials.png)
 
-## Discussion
+# Discussion
 Our discussion on this paper went down many paths during the course of meeting. This summarizes the main points that we talked about.
 
-### Criticism
-The first thing we talked about was that this paper's evaluation may **not represent the real world of vulnerability hunters**. In the real world, you don't search for bugs for only 10 days, and you most certainly don't DFS for only 5 days. When comparing DFS and BFS in such a short period, of course BFS will win in finding **more** bugs, but these bugs are often less impactful. The paper does not address this issue in it's evaluation. Often in the real world you DFS for months on a single target. In some way we felt a comparison of bugs may have been warranted. 
+## Criticism
+The first thing we talked about was that this paper's evaluation may **not represent the real world of vulnerability hunters**. In the real world, you don't search for bugs for only 10 days, and you most certainly don't DFS for only 5 days. When comparing DFS and BFS in such a short period, of course BFS will win in finding **more** bugs, but these bugs are often less impactful. The paper does not address this issue in it's evaluation. Often in the real world you DFS for months on a single target. In some way we felt a comparison of bugs may have been warranted to distinguish the impact of the bugs.
 
+![](/assets/img/industrial_results1.png)
 
+Continuing on this idea, the authors measure success from teams in terms of bug creates and materials created from these two methods. We feel it was important again to mention that simply because another group created more materials, does not mean the materials were useful. A better method for measure material output would be measure the amount of materials generated that **were used by expert level hackers to find bugs**. Simply comparing general materials is not a good way of showing if any of the material was useful for research towards discovering a bug. 
+
+On a realted matter, we felt that this paper now makes it harder for other papers in the field to discuss results pertaining to hacking in the DFS method. This happens because this paper shows/claims that the BFS methods is a better method for hacking efficiently in a group of hackers, and thus every paper after this will need to address how they beat this paper. If the evaluation in this paper truly was flawed, then papers in the future will find it increasingly difficult to outperform this paper. 
+
+Showing that BFS is always better than DFS, with possibly flawed evidence, makes it hard for future papers to go forward. 
+
+## Measuring Human Utility 
+One discussion that ensued during the earlier criticism section was the way this paper could have measured success. This paper mostly focuses on bugs and material collection and tries to relate that to finding more vulnerabilities, but we thought that might not be the only thing that is valuable. **Human utility** could be highly relevant to this paper. In this paper, the periodic surveys shows that participants feel happier and more confident when they work in the BFS methods, and consequentially have more utility due to being happy and less frustrated. This paper could have addressed how working in the BFS method is a powerful way to maximize human utility (or the amount of work each person can output), which may not be directly correlated to the amount of bugs produced. This would hold a gripping argument that when working with many people, DFS decreases the amount of human utility. 
+
+## Contribution to the Community
+Overall, we felt this paper ushered in a novel idea about measuring the productiveness of bug hunting and how different methods may relate to the new methods of looking for bugs. This was indeed a paper that may have opened a door to an entirely new area of research in computer security. 
 
 
