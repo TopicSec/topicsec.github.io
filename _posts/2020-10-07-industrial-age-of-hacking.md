@@ -222,5 +222,12 @@ Both teams produced more materials using breadth-first search over depth-first s
 
 ![](/assets/img/TIAH - materials.png)
 
+## Discussion
+Our discussion on this paper went down many paths during the course of meeting. This summarizes the main points that we talked about.
+
+### Criticism
+The first thing we talked about was that this paper's evaluation may **not represent the real world of vulnerability hunters**. In the real world, you don't search for bugs for only 10 days, and you most certainly don't DFS for only 5 days. When comparing DFS and BFS in such a short period, of course BFS will win in finding **more** bugs, but these bugs are often less impactful. The paper does not address this issue in it's evaluation. Often in the real world you DFS for months on a single target. In some way we felt a comparison of bugs may have been warranted. 
+
+
 
 
