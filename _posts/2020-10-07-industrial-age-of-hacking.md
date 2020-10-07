@@ -49,7 +49,7 @@ In this phase, hackers gain knowledge of the design and use of the target.
 Of particular interest are how the target is commonly deployed, configuration options for more advanced uses, and the overall design of the software itself.
 
 ## Attack Surface Analysis
-AT a high level, this phase revolves around coming up with ways to supply inputs to various aspects of the target program.
+At a high level, this phase revolves around coming up with ways to supply inputs to various aspects of the target program.
 This is the first stage of the process that is highly differentiated by hacker skill level.
 Prior work in this area has often pointed out that master-level skillsets are often required to begin work; the authors note finding several counterexamples where apprentices and journeymen were able to discover vulnerabilities without requiring the assistance of a master.
 
@@ -58,7 +58,7 @@ Apprentices apply standard automated tools as long as they are useful, and bail 
 Their work up to that point is documented, and the apprentice moves on to a new target.
 
 ### Journeymen
-Journeyman utilize the documentation from prior work by apprentices to skip ahead and utilize their skillset to work around the issues encountered by the apprentices.
+Journeyman utilize the documentation from prior work by apprentices to skip ahead and utilize their skill set to work around the issues encountered by the apprentices.
 
 ### Masters
 Masters likewise utilize documentation from prior apprentice and journeyman work to skip directly the aspects requiring their skills, such as those requiring changes to existing analysis software or new forms of analysis entirely.
@@ -85,7 +85,7 @@ In this case, apprentices and occasionally journeymen may find themselves unable
 # Breadth-first
 At the core of the proposed breadth-first targeting strategy is an increase in the number of targets.
 Given enough potential targets, lower-skilled hackers are free to jump to a new target as soon as it becomes clear that they cannot make further progress on their current target.
-These abandoned targets are then queued to be handled by available journeymen, and likwise by masters if necessary.
+These abandoned targets are then queued to be handled by available journeymen, and likewise by masters if necessary.
 To increase breadth even further, the described process stops all work on a target during automated analysis, further increasing the total number of targets that may be analyzed.
 The authors provide several ideas for increasing the number of targets, including breaking down targets into multiple smaller targets and transitively considering the dependencies of a target.
 Another benefit pointed out by the paper is that a much larger queue of potential targets allows new team members the freedom to select targets compatible with tools they are already familiar with.
@@ -140,7 +140,7 @@ They use Gitlab project/issue to manage teamwork. A project's status consisted t
 - append to an issue relevant articles, blogs, source repositories, corpora, and other information uncovered during their search
 - move an issue from *information gathering* to *program understanding* when subjects start to create products in Gitlab repo
 - move an issue to the *exploration* list upon creating working fuzzing harness
--  move an issue to the *journeymen* list if progress becomes too difﬁcult.
+-  move an issue to the *journeymen* list if progress becomes too difficult.
 
 The workstations contained tools including: *Ghidra, AFL, Honggfuzz, Docker and Mayhem.* 
 
@@ -149,3 +149,78 @@ The workstations contained tools including: *Ghidra, AFL, Honggfuzz, Docker and 
 ![](/assets/img/2020-10-07-industrial-age-of-hacking/workflow.jpg)
 
 The experiment involved two iterations. During each iteration, each team applied different strategies for one hour, then they exchanged strategies and completed corresponding assessments and surveys.
+
+
+# Results
+
+## Surveys
+
+Team members were surveyed hourly on their feelings regarding the use of each process during the experiment.
+In both weeks of the experiment, surveyed team members using the breadth-first search strategy felt less surprised (MW=0.003), less doubtful (MW=0.004), and spent more time with tools or harnessing (MW=5 X 10<sup>-7</sup>).
+At the conclusion of the experiment Team members found depth-first search to be less effective (B=0.019).
+Likewise, subjects preferred breadth-first search (B=0.03).
+It was also easier to start (B=2.4 X 10<sup>-4</sup>) breadth-first search, and it was easier for novices to contribute (B=2.400 X 10<sup>-4</sup>).
+However, breadth-first search resulted in members feeling like less of part of a team (B=0.003).
+The authors note, "We must assume our sample of 12 is 'large enough'.  To balance the number of tests with our small sample, we use an acceptance criteria of 0.020.".
+
+
+## Number of bugs found
+
+To account for the randomness of fuzzing results, the authors ran each harness created during the experiment in three independent trials for 24 hours in the manner intended by the harness creator.
+Bugs were de-duplicated via the mechanism described in [Mayhem](https://users.ece.cmu.edu/~dbrumley/pdf/Cha%20et%20al._2012_Unleashing%20Mayhem%20on%20Binary%20Code.pdf)
+Mann-Whitney was used to test the mean difference in coverage and bug metrics.
+The cumulative number of unique bugs found in each independent trial is shown below.
+
+| Team  | Method            | Harnesses | T<sub>0</sub>   | T<sub>1</sub>  | T<sub>2</sub> |
+| :---- |:------            |:--------- |:---             |:--             |:--            |
+| A     | S<sub>d</sub>     | 8         | 3               | 2              | 3             |
+| A     | S<sub>b</sub>     | 42        | 31              | 23             | 40            |
+| B     | S<sub>b</sub>     | 61        | 42              | 49             | 40            |
+| B     | S<sub>d</sub>     | 12        | 4               | 4              | 4             |
+
+
+After combining both team's findings a significant result was found to claim f(S<sub>d</sub>) < f(S<sub>b</sub>) with p-value 0.002 < 0.02.
+The breadth-first search strategy not only found more bugs, but found a greater variety of bugs.
+
+
+## Hacking Skill assessment
+
+Subject's work products were assessed on:
+  - Number of working harnesses 
+  - Number of bugs found 
+  - Number of bugs reproduced
+
+A working harness was defined as: any harness that found new paths shortly after starting.
+A bug was defined as: any termination by a signal that may result in a core dump.
+All measurements were then combined into a single score with each category was given equal weight.
+A Friedman signed-rank test was used with an acceptance criteria of 0.02.
+The results were found to not be significant.
+
+| Group                     | p-value |
+|:------                    |:--------|
+| All twelve participants   | 0.02024 |
+| Group one                 | 0.10782 |
+| Group two                 | 0.12802 |
+
+
+## Ancillary data
+Team member work activities were categorized and binned into hour-long blocks based upon time spent with X11 focus on Firefox for each strategy.
+No significant difference in work activities were found between depth-first search and breadth-first search based on a Wilcoxon signed-rank test.
+The Firefox browsing history also did not significantly relate to the strategy the team utilized.
+
+
+## Materials Produced
+Both teams produced more materials using breadth-first search over depth-first search.
+
+| Team  | Method            | Materials |
+| :---- | :-------          |:----------|
+| A     | S<sub>d</sub>     | 151       |
+| A     | S<sub>b</sub>     | 588       |
+| B     | S<sub>d</sub>     | 177       |
+| B     | S<sub>b</sub>     | 387       |
+
+
+![](/assets/img/TIAH - materials.png)
+
+
+
