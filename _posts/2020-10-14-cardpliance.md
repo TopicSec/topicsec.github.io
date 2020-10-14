@@ -33,14 +33,20 @@ Identifying vulnerabilities related to credit card information in mobile applica
 
 
 ### Amandroid
+![](/assets/img/2020-10-14-cardpliance/uiref.png)
+
 Cardpliance is built on top of open-source Android application analysis tool, Amandroid [1]. Amandroid was chosen due to its actively maintained state, extensible design, and convenient graphs outputs. It is primarily focused on data flow and performs flow- and context sensitive static program analysis on .apk files. Amandroid uses DDG (Data Dependence Graph) to perform taint analysis.  It marks given sources and sinks in the DDG and computes the set of all paths between them. The list of paths from sources to sinks is stored in a Taint Analysis Result (TAR) structure. User can define sources and sinks via text strings of method signatures in a configuration file.
 
 ### Resolving input semantics
+![](/assets/img/2020-10-14-cardpliance/dataflow.png)
+
 Applications access user entered text via the `TextView.getText()` method. To acquire a TextView object, the application calls `Activity.findViewById(R.id.widget_name)`, where `R.id.widget_name` is a unique integer managed by the
 application’s resource R class. Therefore, Cardpliance uses `Activity.findViewById(int)` as a taint source. The analysis will taint the returned `TextView` and the subsequent string from `TextView.getText()`. Furthermore, since the DDG contains points-to information, the PCI DSS tests can use Amandroid’s `ExplicitValueFinder.findExplicitLiteralForArgs()` method to determine the integer value passed to the taint source. It then uses the resource IDs of credit card information widgets identified by UiRef to determine the types of information flowing to each sink.
 However, applications frequently call `Activity.findViewById()` to assess many different UI widgets. Therefore, simply defining it as a taint source will cause Amandroid’s taint analysis to needlessly compute taint paths for many irrelevant sources. To address this problem, Cardpliance implements a custom source and sink manager that refines the taint sources to just those `Activity.findViewById(int)` instructions that are passed an integer in a list precomputed by UiRef. This process involves using the `PTAResult` hash map while marking taint sources. This significantly reduces application analysis time. Additionally, since one of Cardpliance’s tests uses `View.setText()` as a taint sink, similar optimization in the custom source and sink manager is performed. In this case, the call to `Activity.findViewById(int)` is identified by backtracking in the DDG to the definition site of the `View` object. The integer resource ID is resolved similarly. If the ID is in a predefined list (defined via a heuristic for the test), the call to `View.setText()` is defined as a taint sink. Finally, Amandroid’s control flow analysis was patched to properly track the use of `View` objects obtained in `OnClickListener` callbacks. It occured that many applications declare the `OnClickListener` of a `View` as an anonymous inner class. In such cases, Amandroid did not capture the data flow initiated by the button click. This issue was fixed by adding a dummy edge from the point where the `OnClickListener` was registered to the entry point of the corresponding `OnClickListener.onClick()` method.
 
 ### PCI DSS Tests
+![](/assets/img/2020-10-14-cardpliance/pci_methods.png)
+
 Each test is defined with respect to instructions invoking three sets of methods: source methods (S), sink methods (K), and required methods (R). S and K are traditional sources and sinks for taint analysis. R places requirements on the data flow path. Informally, R defines a set of methods that should be called on the data flow path (e.g., a string manipulation method that could mask characters). If no methods from R exist on the path, then a potential violation is raised.
 
 Six PCI DSS tests with respect to S, K, and R are described:
