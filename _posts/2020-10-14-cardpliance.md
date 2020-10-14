@@ -97,6 +97,8 @@ The goal is to gauge the impact of PCI DSS non-compliance on real-world users. P
 10. Applications are not masking credit card numbers when displaying them in the user interface
 
 ### Case studies
+![](/assets/img/2020-10-14-cardpliance/pretzel.png)
+
 Two examples of how applications are violating PCI DSS based on Cardpliance analysis
 
 Case Study 1: A credit card reader application is mishandling hundreds-of-thousands of customer’s credit card numbers
