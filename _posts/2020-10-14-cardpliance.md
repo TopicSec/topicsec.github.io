@@ -140,14 +140,14 @@ The following recommendations might be useful for developers building Android ap
 - Always mask CC number before displaying it
 - Only use explicitly-addressed Intent messages when sharing payment information
 
-## Discussion / Criticism
+## Discussion / Criticism of the Paper
 
-> Numbers do not line up with other studies of PCI-DSS compliance - generally it is found that things are noncompliant at a much higher rate than claimed
-> Claims of SSL usage do not line up with related work
-> Dataset (top 100 apps) misses the kinds of apps which are most likely to be noncompliant
-> Strings filtering was too strict
-> Analysis failed on half of the strings-filtered apps
-> No indication of why the tool takes so long to run
+As mentioned in the paper, the numbers do not line up with other studies of PCI-DSS compliance - generally it is found that things are noncompliant at a much higher rate than what this paper shows.
+Furthermore, claims of SSL usage do not line up with related work.
+It is our belief that the 358 selected apps, which draws from the top 500 free applications across Google Play's 35 categories, are both too small of a sample and not sufficiently representative of the broader ecosystem.
+It would be nice to see what compliance looks like in the case of smaller apps, which seem more likely to be noncompliant.
+Furthermore, it's not clear what sorts of biases are being introduced through this filtering process from 17,500 apps to 358 apps, which occurs due to a very basic keyword filtering mechanism, and filtered even further by a number of failures across the analysis pipeline.
+Finally, it is very unclear why cardpliance takes several hours to perform its analysis on an application.
 
 ## References
 [[1]](http://pag.arguslab.org/argus-saf) http://pag.arguslab.org/argus-saf
