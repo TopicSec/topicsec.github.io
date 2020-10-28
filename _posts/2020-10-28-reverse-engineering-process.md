@@ -70,7 +70,7 @@ After organize interview data into an initial codebook, they develop a theoretic
 
 They recruited interview participants from online forums, vulnerability discovery organizations, and relevant conferences.
 
-![](/assets/img/participants.png)
+![](/assets/img/2020-10-28-reverse-engineering-process/participants.png)
 
 ## Reverse Engineering Process Model
 
