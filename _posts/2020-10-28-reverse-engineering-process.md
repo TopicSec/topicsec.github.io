@@ -169,6 +169,9 @@ If these approaches failed, some participants searched StackOverflow hoping the 
 ## Meaningful Analysis of Reversing
 One of the first topics that our group talked about was the non-grandiose claims that this paper had made on the reverse engineering process. As compared to some of the recent literature in investigating reverse engineering, we felt this paper did an exceedingly good job at making claims that were fully backed by this paper. We felt particularly fond about the generality of the reverse engineering process they described with the earlier used image.
 
+
+![](/assets/img/analysis phases.png)
+
 The author throughly investigated the reversing process, and kept the claims general. In addition, the authors even explained their at-first-glance tiny dataset of 16 people -- claiming convergence of observed results. Overall, we felt this paper had a meaningful contribution to the scientific community that will help the future of research in this area. The introduction of "beacons," though simple, was a valuable explanation of some important concepts in reverse engineering. 
 
 ## Usefulness For Beginners
