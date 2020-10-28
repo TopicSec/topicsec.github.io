@@ -72,6 +72,67 @@ They recruited interview participants from online forums, vulnerability discover
 
 ![](/assets/img/participants.png)
 
+## Reverse Engineering Process Model
+
+Based upon the actions of participants, the reverse engineering was defined as a three phase process:
+- Overview
+- Sub-component scanning
+- Focused experimentation
+
+First, a high-level understanding of the program's 
+This information is used to determine which parts of the program are of particular interest and warrant deeper exploration.
+This focused analysis leads to specific questions and hypothesis generation.
+Lastly, these hypothesis are directly tested to provide greater insight into program behavior.
+This information is then used to investigate sub-components further.
+
+![](/assets/img/analysis phases.png)
+
+### Overview
+
+During the overview phase, reverse engineers use a their high-level knowledge, familiarity with the program, and prior experience with similar programs to reason about the program.  
+
+**Identify the strings and APIs used** - Strings and API calls can immediate provide information about program behavior.  Combining these keywords with a high-level mental model of likely program structure allows reverse engineers to identify where in the binary expected activities are performed.
+
+**run the program and observe its behavior** - Similarly, simply running the program can provide additional context to strings or other visible program elements.  Even the lack of a particular value or element can guide the reverse engineer to deduce high-level design decisions about the program.
+
+**Review program metadata** - Program metadata, such as traces, libraries loaded, or function size offer additional insight into the program.
+
+**Malware analysts perform overview after unpacking** - Malware is often obfuscated (packed) until execution time.  In these instances, malware analysts must unpack the binary.  After doing so, the other overview steps are the same.
+
+**Overview is unique to RE** - The authors note this overview step is unique to reverse engineering.  In other scenarios, such as debugging, the engineer is likely to already be familiar with the program and have access to additional information such as documentation, 
+
+
+### Sub-component Scanning
+
+Sub-component scanning begins after the high-level program behavior has been established.
+The framing of questions tend to shift from asking **what** a section of code does to **how** does it perform this functionality.
+This action is still a somewhat high-level task because reverse engineers are wary of spending too much time answering a specific questions that may not necessarily be fruitful.
+
+
+**Scan for many beacons** - Scanning specific sections of code for known API calls, constants, and variable names allows functionality to be inferred without requiring complete understanding.
+Combining these beacons with experience, reverse engineers can quickly identify common patterns in control-flow or naming conventions identifying functionality found in similar programs.
+
+**Focused on specific data-flow and control-flow paths** - Reverse engineers often focus on a single data-flow to understand how data is passed from one function to the next.  This process is used to determine if a potentially vulnerable action can be realized in the program based upon how the variable is created and mutated earlier in the program.
+
+**The diversity of beacons represents a second difference from program comprehension** - Comparing these activities with developers, reverse engineers often rely on less obvious beacons such as control flow and program flow to gain additional understanding.
+
+
+### Focused Experimentation
+
+After gleaning as much information as possible from the first two steps, reverse engineers shift to answering specific questions to support or refine their understanding of the program.
+
+**Execute the program** - Many hypothesis can be confirmed by running the program under specific circumstances and observing if an expected behavior occurs.  This can include checking variable values at specific points of execution such as observing if malformed input reaches a particular location in the program in a debugger, but often simply observing changes in program behavior can serve as confirmation.  Fuzzing is often used for this purpose, but in the reversing context, this is performed manually to answer specific questions rather than through the use of an automated tool that performs random input mutations.
+
+**Compare to another implementation** - When a reverse engineer has a high-level understanding of a function, it may be easier to re-implement the behavior in a high-level language and compare function output.  Similarly, program functionality can be confirmed by comparing output with a reference implementation in the case of open-source software.
+
+**Read line-by-line only for simple code or when execution is difficult** - When other options cannot help, reverse engineers will manually reading small sections of code line by line.  This can occur when a program may take additional time to run correctly, or a very specific implementation detail needs to be understood.  Ideally, this step is performed manually leveraging the reverse engineers knowledge, but often times tools such as symbolic execution are utilized to assist in more complex scenarios.
+
+**Beacons are still noticed and can provide shortcuts** - Although this step focuses on answering a very narrow and specific question, additional beacons can be found during this step that may immediately invalidate or confirm a hypothesis.  This often provides sufficient information to abandon further investigation and explore another aspect of the program.
+
+**Simulation methods mostly overlap with program comprehension** - Many of these techniques are found in program comprehension literature.  The use of reference implementations for comparison is unique to reverse engineering.  This is attributed to the reduced information available to the reverse engineer.
+
+
+
 # Results: Trends Across Phases
 
 The authors also noted several trends that spanned the different phases; these comprised both answers to initial research questions that simply weren't phase-specific as well as further observations.
