@@ -7,6 +7,13 @@ tags: [bug-finding, ]
 pin: true
 ---
 
+## Paper Info
+- **Paper Name**: An Observational Investigation of Reverse Engineers’ Processes
+- **Conference**: USENIX Security '20
+- **Author List**: Daniel Votipka, Seth Rabin, Kristopher Micinski, Michelle L. Mazurek
+- **Link to Paper**: [here](https://www.usenix.org/system/files/sec20-votipka-observational.pdf)
+- **Food**: Pairs well with soft pretzels
+
 # Introduction
 
 Towards a better understanding of reverse engineers’ processes, this paper presents a semi-structured, observational interview study of reverse engineers, with the goal of producing insights for improving interaction design for reverse engineering tools.
