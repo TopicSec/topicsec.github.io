@@ -164,3 +164,26 @@ One participant specifically called out the case of several manipulations of a s
 Finally, the last cross-phase trend observed was a tendency to query online resources in order to aid analysis.
 System and API documentation was widely used, as were third-party breakdowns of the poorly documented aspects.
 If these approaches failed, some participants searched StackOverflow hoping the issue had been encountered before, or searched for unique constants in the algorithm they were analyzing (e.g. searching the initialization vector for MD5 reveals the algorithm).
+
+# Discussion
+## Meaningful Analysis of Reversing
+One of the first topics that our group talked about was the non-grandiose claims that this paper had made on the reverse engineering process. As compared to some of the recent literature in investigating reverse engineering, we felt this paper did an exceedingly good job at making claims that were fully backed by this paper. We felt particularly fond about the generality of the reverse engineering process they described with the earlier used image.
+
+The author throughly investigated the reversing process, and kept the claims general. In addition, the authors even explained their at-first-glance tiny dataset of 16 people -- claiming convergence of observed results. Overall, we felt this paper had a meaningful contribution to the scientific community that will help the future of research in this area. The introduction of "beacons," though simple, was a valuable explanation of some important concepts in reverse engineering. 
+
+## Usefulness For Beginners
+On the note of explaining the reverse engineering process, there was some discussion about the usefulness of this paper for beginners in reverse engineering. To any individual who has done some reverse engineering, the concepts of this paper may feel trivial, but we felt that the description of the reversing process can be helpful to a software engineer that has never reversed software before. 
+
+Some mentioned that there are various gems for beginners in this paper that spans past the earlier mentioned diagram that describes how reversing works. Some of these gems are as simple as the more experienced reverses in the paper looking for commonalities across software -- like the example of pinging websites for a malware to detect if it has connection to the Internet. 
+
+Others in the group claimed that the usefulness for beginners in this paper could be simply reduced to the single reversing diagram. The claim stemmed from the high level of generality that the reverse engineering process was described in throughout the paper. Most new reverse engineers will only benefit from knowing they should:
+1. Be looking for beacons across the target
+2. Not spend too much time on a single section of the code.
+
+These concepts can mostly be parsed from reading a single section of this paper. 
+
+## The Future of Reverse Engineering Tools
+
+The last discussion that stemmed from this paper was the need for betting tooling in the RE process. Through this paper we had more discussion about the need for a minimal context-switch when reversing. This paper shows how often we need intense context switching of work when we want to static analysis versus dynamic analysis. Currently, there lacks a single tool which provides both good static and dynamic analysis with little switch.
+
+Some of this discussion poured into the reliability of plugins that attempt to bring these features to lite in newer tools.
