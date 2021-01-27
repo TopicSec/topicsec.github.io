@@ -15,6 +15,15 @@ pin: true
 
 ## Problem
 
+Cheating in online games is a problem that has plagued online gaming since its inception, and in the past few years has turned into an all out arms race between game and cheat developers. Veteran online gamers might remember early anticheat systems such as PunkBuster, Valve Anti-Cheat (VAC), and Blizzard's Warden being put to use in the early 2000s. However, recently anti-cheat has been rapidly evolving as cheats become harder and harder to detect and combat. BlackMirror proposes one such solution for combating a certain type of cheats: wallhacks. For the uninformed, wallhacking is the ability in a multiplayer game to see other players through opaque objects such as walls, giving them a large advantage over other players. Think of it like playing hide and seek, but you can see where everyone is through obstacles. 
+
+![](/assets/img/2021-01-20-blackmirror/wallhack.jpg)
+
+To understand a solution to wallhacking, one must first understand how they work. Modern multiplayer online games operate with a client-server model where multiple clients are connected to a remote dedicated gameserver. They each communicate with eachother to maintain their own copy of a game state, which is essentially state-based knowledge of where players are, what they're doing, and when they're doing them. This game state is then used to calculate exactly what the player sees each frame on their monitor, where a typical rendering pipeline is used. This involves checking which enemy players are visible by checking their world coordinates against the player's world coordinates by casting a ray from the player to the enemy and checking for obstacle collision, which would indicate the enemy is behind an object and therefore occluded. Wallhacking involves disabling this check, and displaying enemy players regardless of whether they're obstructed by an obstacle. Many wallhack cheats will also highlight enemy players with vibrant colors to make them even more visible.
+
+Note that the above is possible because the game state on the client of a player contains *all* of the information about the game at hand, so even if an enemy player is obstructed, the player's local game state on their client still contains their world coordinates, so they can be drawn if the check is disabled. The logical conclusion would be to perform checks on the server to only give the player a partial game state, where only visible enemy players are included, but the expensive nature of the calculations required means that it's not viable to perform these checks on the game's server.
+
+
 
 ## Solution
 
