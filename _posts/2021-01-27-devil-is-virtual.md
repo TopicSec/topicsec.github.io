@@ -8,7 +8,7 @@ pin: true
 
 ## Paper Info
 - **Paper Name**: Devil is Virtual: Reversing Virtual Inheritance in C++ Binaries
-- **Conference** CCS '20
+- **Conference**: CCS '20
 - **Author List**: Rukayat Ayomide Erinfolami, Aravind Prakash
 - **Link to Paper**: [here](https://arxiv.org/pdf/2003.05039.pdf)
 - **Food**: Cookies
