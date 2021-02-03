@@ -30,5 +30,16 @@ Due to deduplication of virtual base subobjects, the offset to the virtual base 
 All of these must be accounted for in order to properly ensure CFI in the case of virtual dispatch attacks.
 
 ## Solution
+In summary, this paper addresses the problem of reversing virtual inheritance in C++ binaries. This research question is meaningful, since from examples presented in this paper, the failure of detecting virtual inheritance can tigger false positives and false negatives. VirtAnalyzer is proposed to solve this question which can recover virtual inheritance with a decent detection rate in the virtual inheritance tree.
+
+The high-level ideas behind VirtAnalyzer lie at different aspects. The first is to recognize the relationship between mandatory and optional fields, this can be done by combining different VTables. Next, identifying construction VTables is also necessary since VTT is important in virtual inheritance as well as discriminating construction VTables and regular VTables. Then, based on the fact that the virtual function’s regular VTable is the same, grouping construction VTables of a class can be done. The last is to identify virtual and non-virtual bases so that the model can filter out non-virtual bases.
+
+To be more specific, there are two phases in VirtAnalyzer, the first phase is to extract metadata from binaries and the second phase is to recovering bases. For the first phase, there are also two different focuses including identifying certain components and building relationships. The identification process mainly includes identifying VTables, VTTs, and subVTTs. After identification, virtual base offsets need to be extracted, in order to prevent recovering false VTables, there should be at least one matching virtual base offset and offset-to-top, otherwise, the VTT need to be discarded. Then, construction VTable is mapped to regular VTables. At last, constructors and destructors are identified and parsed. For the second phase, with merging recovered virtual bases and intermediate bases, the virtual inheritance tree is built of binaries. The workflow of VirtAnalyzer is displayed below.
+
+![](/assets/img/2021-01-27-devil-is-virtual/workflow.png)
 
 ## Discussion
+
+This paper sparked the question of how to evaluate the recovery of class info, should we see how close we can get to recreating the orginal source code or should we evaluate against the available decompilation tools and see how the information of classes can be used to make reverse engineering of programs easier. There was also a discussion how much of background info should a very technical paper have, especially, when you know that the targer audience is really small. Another question was where to draw the line between an engineering paper and novel research paper, the consensus what that it is fine to see an engineering paper once in a while as long as it is helping science move ahead. 
+
+The take away from this paper was that even if you don't make shocking advancements or have a small target audience (reverse engineers, hardcore C++ programmers etc), as long as you are able to reimplement the engineering work on an function tool (eg. IDA or GHIDRA) and program analysis get better, it is good research.
