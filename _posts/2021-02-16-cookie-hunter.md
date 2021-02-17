@@ -1,4 +1,3 @@
-
 ---
 title: "The Cookie Hunter: Automated Black-box Auditing"
 author: Team Гранат
