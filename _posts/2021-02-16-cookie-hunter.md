@@ -54,7 +54,7 @@ Cookie Hunter attempts to handle this challenge by implementing a custom browser
 
 The threat model used in this analysis’s final stage is of a passive network attacker or eavesdropper. The visible website JavaScript is analyzed for exploits in the code.
 
-![](../assets/img/2021-02-16-cookie-hunter/img1.png)
+![](/assets/img/2021-02-16-cookie-hunter/img1.png)
 
 ### System Design:
 
@@ -78,7 +78,7 @@ Once logged-in, sites were audited common cookie and privacy vulnerabilities.
 Of the 1 million sites tested, only around 25k were successful in logging-in an pentesting the site.
 Of the 25k, around 12k were vulnerable to the earlier mentioned tests. This is best described in their table:
 
-![](../assets/img/2021-02-16-cookie-hunter/img2.png)
+![](/assets/img/2021-02-16-cookie-hunter/img2.png)
 
 ### Observations
 
@@ -86,7 +86,7 @@ Of the 25k, around 12k were vulnerable to the earlier mentioned tests. This is b
 
 - Many websites implemented HSTS incorrectly, leaving either the base domain unprotected or not including subdomains.
 
-![](../assets/img/2021-02-16-cookie-hunter/img3.png)
+![](/assets/img/2021-02-16-cookie-hunter/img3.png)
 
 Note that not all 5680 domains are vulnerable to XSS because protections may be deployed that are not easily visible or detectable.
 
@@ -95,13 +95,13 @@ Note that not all 5680 domains are vulnerable to XSS because protections may be 
 To verify the automatic tool’s results, a validation test to confirm the capacity to hijack a number of these domains were performed.  Out of the top 1000 sites, 10 domains were picked randomly from the data set, 10 domains picked randomly out of the remaining data set, and 10 domains were handpicked.
 21 out of the 30 domains were successfully hijacked, obtaining full control, and 8 of the remaining domains were successfully hijacked partially. It was possible to perform password changes for 5 of these domains.
 
-![](../assets/img/2021-02-16-cookie-hunter/img4.png)
+![](/assets/img/2021-02-16-cookie-hunter/img4.png)
 
 ## Discussion 
 
 An interesting insight is that cookie security implemented through HSTS is challenging to do properly. Countless implementations exhibited major security flaws. 
 
-![](../assets/img/2021-02-16-cookie-hunter/img5.png)
+![](/assets/img/2021-02-16-cookie-hunter/img5.png)
 
 So what is an acceptable reduction from a dataset?  Is it significant that the demonstration software was only successful in registering accounts on only 25,242 domains out of 1 million?  
 
