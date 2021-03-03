@@ -12,7 +12,8 @@ pin: true
 - **Author List**: Ivan Paschenko, Duc-Ly Vu, Fabio Massacci
 - **Link to Paper**: [here](https://www.researchgate.net/profile/Duc-Ly-Vu/publication/343403374_A_Qualitative_Study_of_Dependency_Management_and_Its_Security_Implications_To_be_appear_in_ACM_CCS_2020/links/5f4d0536a6fdcc14c5f6ef05/A-Qualitative-Study-of-Dependency-Management-and-Its-Security-Implications-To-be-appear-in-ACM-CCS-2020.pdf)
 - **Food**: caramel apples
-# Problem
+
+## Problem
 
 Experiments show that researchers and developers from Maven, NPM, and Android ecosystems do not often update their vulnerable software software thus exposing them to the security risks. So they run 25 semi-structured interviews with developers from large and small-medium companies located in nine countries, and investigated the following questions:
 
@@ -26,12 +27,12 @@ RQ4: Which mitigations do developers apply for vulnerable dependencies with no x
 
 Those questions are addressed from different aspects, including dependency management and  mitigation of dependency issues, technologies/ tools for automating the software development process, and information needs and decision making during software development. 
 
-# Findings (abridged)
+## Findings (abridged)
 
 The following are more or less the most relevant observations made by the authors paraphrased for readability.
 They are more actionably analyzed in the following section, but seeing the individual observations themselves is helpful.
 
-## Reasons for selection of dependencies
+### Reasons for selection of dependencies
 
 - Security is considered when bringing in new dependencies if company policy requires it.
 
@@ -41,7 +42,7 @@ They are more actionably analyzed in the following section, but seeing the indiv
 
 - Selection of dependencies is often based on information *about* those dependencies (such as GitHub stars or number of contributors).
 
-## Reasons for not updating
+### Reasons for not updating
 
 - Developers pay attention to vulnerabilities if they're updating dependencies.
 
@@ -51,7 +52,7 @@ They are more actionably analyzed in the following section, but seeing the indiv
 
 - Company policy leads to either of two main camps: *never update* and *adopt every new version*.
 
-## Automation of dependency analysis
+### Automation of dependency analysis
 
 - Dependency analysis tools are used to find potential issues, but updating dependencies is still manual.
 
@@ -61,7 +62,7 @@ They are more actionably analyzed in the following section, but seeing the indiv
 
 - Developer recommendations for dependency analysis tools include: lower false positive rate, offline use, easy integration, and reporting of both new and old safe versions.
 
-## Mitigation of unpatched vulnerabilities
+### Mitigation of unpatched vulnerabilities
 
 - If fixes for unpatched vulnerable software are difficult, developers often stay with the vulnerability even if it affects functionality they use.
 
@@ -71,7 +72,7 @@ They are more actionably analyzed in the following section, but seeing the indiv
 
 - As a last resort, compatible dependencies may be swapped out.
 
-# Implications and conclusions
+## Implications and conclusions
 
 The paper draws several conclusions from the above observations.
 First, considering security often requires time and expertise that may simply not be available.
@@ -93,7 +94,7 @@ Differences in skill level, recognition of dependency management as important wo
 As such, specific mitigation recommendations for dependency analysis tools focus on the needs of large enterprises.
 Recommendations include both support for directly accessing dependency source code to attempt to fix vulnerabilities and tooling to evaluate compatible replacements and the work required to switch to them.
 
-# Discussion
+## Discussion
 
 This paper did a good job of investigating a developer's mindset while managing software dependencies and the security implication which come with it. Most of the difficulties and challenges described in the paper are from the point of view of a developer in a large organization and since most of us have very less experience working in the industry, the discussion for this paper was relatively quite.
 
