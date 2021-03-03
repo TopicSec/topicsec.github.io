@@ -92,3 +92,11 @@ The final observation is of the tendency for large enterprises to work proactive
 Differences in skill level, recognition of dependency management as important work, and simply available time lead small/medium enterprises to rely more on community support.
 As such, specific mitigation recommendations for dependency analysis tools focus on the needs of large enterprises.
 Recommendations include both support for directly accessing dependency source code to attempt to fix vulnerabilities and tooling to evaluate compatible replacements and the work required to switch to them.
+
+# Discussion
+
+This paper did a good job of investigating a developer's mindset while managing software dependencies and the security implication which come with it. Most of the difficulties and challenges described in the paper are from the point of view of a developer in a large organization and since most of us have very less experience working in the industry, the discussion for this paper was relatively quite.
+
+Often companies seem to have policies and restrictions in place with respect to the usage of open source tools and open sourcing the tools they develop. Many open source projects tend to use GPL, which means that any derivative work must be distributed under the same or equivalent license terms, which might not be what companies want to do. Most of the projects and tools developed by our lab are open source and hosted on github, so generally we don't have any issues having dependencies or updating them. We have found dependabot to be really useful for managing them.
+
+We also think that the data and insights collected from a qualitative analysis research is really interesting. It might even be a good idea to write a qualitative analysis paper before doing a quantitative paper. What do you think?
