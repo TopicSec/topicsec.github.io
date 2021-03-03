@@ -12,6 +12,19 @@ pin: true
 - **Author List**: Ivan Paschenko, Duc-Ly Vu, Fabio Massacci
 - **Link to Paper**: [here](https://www.researchgate.net/profile/Duc-Ly-Vu/publication/343403374_A_Qualitative_Study_of_Dependency_Management_and_Its_Security_Implications_To_be_appear_in_ACM_CCS_2020/links/5f4d0536a6fdcc14c5f6ef05/A-Qualitative-Study-of-Dependency-Management-and-Its-Security-Implications-To-be-appear-in-ACM-CCS-2020.pdf)
 - **Food**: caramel apples
+# Problem
+
+Experiments show that researchers and developers from Maven, NPM, and Android ecosystems do not often update their vulnerable software software thus exposing them to the security risks. So they run 25 semi-structured interviews with developers from large and small-medium companies located in nine countries, and investigated the following questions:
+
+RQ1: How do developers select dependencies to include into their projects, and where (if at all) does security play a role?
+ 
+RQ2: Why do developers decide to update software dependencies and how do security concerns affect their decisions?
+ 
+RQ3: Which methods, techniques, or automated analysis tools (e.g., Github Security Alerts) do developers apply while managing (vulnerable) software dependencies?
+ 
+RQ4: Which mitigations do developers apply for vulnerable dependencies with no xed version available?
+
+Those questions are addressed from different aspects, including dependency management and  mitigation of dependency issues, technologies/ tools for automating the software development process, and information needs and decision making during software development. 
 
 # Findings (abridged)
 
