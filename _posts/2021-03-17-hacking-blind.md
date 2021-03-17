@@ -46,14 +46,61 @@ Utilizing Spectre, we can leak out arbitrary contents of any written memory.  Fo
 
 ## Approach
 
-## Threat model
+### Threat model
 For this attack to be successful, the attacker must be able to execute code on the target machine and utilize a vulnerability that allows them to overwrite code pointers.  
 The Linux kernel with all mitigations fully enabled, including retpolines, the current mitigation to spectre attacks was fully bypassed by this attack.  
 
-## Speculative probing
+### Speculative probing
 A pointer is found within a conditional that is never executed.  Because it is never executed in real code, the program will not crash.  Retpolines prevents a pointer from being speculatively corrupted, but this mitigation is bypassed as the pointer data is actually corrupted in the real code, but only speculatively executed.
+
+![](../assets/img/2021-03-17-hacking-blind/img_0.png)
+
 We then repeatedly hijack this execution in order to create a suite of primitives  to use in certain exploitation scenarios. For example: kernel aslr code reuse scenario, locating the base addresses for important areas.
 This process builds "stage 1" primitives that can be widely used without prior knowledge of code locations or layouts. You then can utilize these stage 1 primitives to find more specific "stage 2" gadgets useful for more specific exploitation scenarios.  Examples of these include probing for code pages, probing for data pages, or probing for very specific gadgets such as dereferencing a certain attacker controlled pointer.
+
+A sample probing looks like this:
+```c
+// taken from Tasteless 2020 challenge
+for (j = -0x10000; j < 0x010000; j+=0x1000)
+{
+      observed_ctx = 0;
+      objs[TARGET_OBJ].fp = (void (*)())TARGET_FN_ADDRESS+j;
+
+      int idx = 0;
+      for (tries = NUM_TRIES; tries > 0; tries--) {
+
+          flush((void *) ACCESS_LOC);
+
+          do_blindside( &objs[idx++]);
+          if (idx == N_OBJECTS) idx = 0;
+
+
+          tmp = flush_reload_t((void * )ACCESS_LOC);
+          if (tmp < RDTSCP_THRESH) observed_ctx++;
+      }
+      if (observed_ctx > 0 )
+      printf("At 0x%x: Observed %d speculative data accesses!\n", j, observed_ctx);
+}
+```
+
+Where the program, as done in user space in this example, does consecutive flushes and probs the object associated with that space.
+
+## Exploitation
+
+The paper has shown three exploits using the spectre method. Each of them contains two stages for exploiting the system and gaining access to code or memory location.
+
+![](../assets/img/2021-03-17-hacking-blind/img_1.png)
+
+### Exploit 1: Breaking Coarse-grained KASLR
+In this proof of concept, they try to use code region probing primitive for exploiting the default standard code KASLR. In the next step, the attacker bypasses the KASLR heap and uses object probing primitive to identify the ROP payload. It gives the attacker to execute code-reuse in the kernel using the single heap buffer overflow vulnerability.
+
+
+### Exploit 2: Speculative Data-only Attacks
+ In this scenario, complex and state-of-the-art mitigation techniques are being assumed against the exploit being used. In this exploit, code region probing and gadget probing leads to primitive spectre probing to find the kernel’s data are leaked random information. They obtain the root password as part of the leaded data obtained from the exploit against the victim. 
+
+### Exploit 3: Breaking Software-based XoM 
+Spectre probing primitive can directly read code and will be able to take advantage of code -reuse against the software-based execute-only-memory. They simply use Spectre probing for leaking the code contents of the kernel and also bypass the software-based range check enforced by the kernel. 
+
 
 ## Mitigations
 Speculative probing may be done by simply stopping an attacker from gaining control of memory.  Unfortunately out of bounds memory safety is very expensive and usually not implemented in practice.
