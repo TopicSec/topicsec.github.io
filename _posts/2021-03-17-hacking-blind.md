@@ -53,7 +53,7 @@ The Linux kernel with all mitigations fully enabled, including retpolines, the c
 ### Speculative probing
 A pointer is found within a conditional that is never executed.  Because it is never executed in real code, the program will not crash.  Retpolines prevents a pointer from being speculatively corrupted, but this mitigation is bypassed as the pointer data is actually corrupted in the real code, but only speculatively executed.
 
-![](../assets/img/2021-03-17-hacking-blind/img_0.png)
+![](/assets/img/2021-03-17-hacking-blind/img_0.png)
 
 We then repeatedly hijack this execution in order to create a suite of primitives  to use in certain exploitation scenarios. For example: kernel aslr code reuse scenario, locating the base addresses for important areas.
 This process builds "stage 1" primitives that can be widely used without prior knowledge of code locations or layouts. You then can utilize these stage 1 primitives to find more specific "stage 2" gadgets useful for more specific exploitation scenarios.  Examples of these include probing for code pages, probing for data pages, or probing for very specific gadgets such as dereferencing a certain attacker controlled pointer.
@@ -89,7 +89,7 @@ Where the program, as done in user space in this example, does consecutive flush
 
 The paper has shown three exploits using the spectre method. Each of them contains two stages for exploiting the system and gaining access to code or memory location.
 
-![](../assets/img/2021-03-17-hacking-blind/img_1.png)
+![](/assets/img/2021-03-17-hacking-blind/img_1.png)
 
 ### Exploit 1: Breaking Coarse-grained KASLR
 In this proof of concept, they try to use code region probing primitive for exploiting the default standard code KASLR. In the next step, the attacker bypasses the KASLR heap and uses object probing primitive to identify the ROP payload. It gives the attacker to execute code-reuse in the kernel using the single heap buffer overflow vulnerability.
