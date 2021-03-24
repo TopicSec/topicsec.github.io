@@ -363,27 +363,29 @@
         "Presenting Blog Post",
     ]
 
+    var skipped_weeks = [
+      moment("2021-03-17 12:00:00")
+    ]
+
     var data = [];
 
     var teamCount = 0
     while (semesterStart < semesterEnd) {
-        console.log("TEAM COUNT: " + teamCount);
-        for (var i = 0; i < event_types.length; i++) {
-            var new_event = {}
-            new_event["calendar"] = teams[teamCount%4].team
-            new_event["eventName"] = new_event["calendar"] + " - " + event_types[i];
-            new_event["color"] = teams[teamCount%4].color
-            new_event["eventTime"] = semesterStart.format('YYYY-MM-DD HH:mm:ss')
-            console.log(new_event)
-            console.log(teamCount%4)
-            data.push(new_event)
-            teamCount += 1
+        if (!skipped_weeks.some((week) => week.format() === semesterStart.format())) {
+          for (var i = 0; i < event_types.length; i++) {
+              var new_event = {}
+              new_event["calendar"] = teams[teamCount%teams.length].team
+              new_event["eventName"] = new_event["calendar"] + " - " + event_types[i];
+              new_event["color"] = teams[teamCount%teams.length].color
+              new_event["eventTime"] = semesterStart.format('YYYY-MM-DD HH:mm:ss')
+              data.push(new_event)
+              teamCount += 1
+          }
         }
         semesterStart.add(7, 'day')
     }
 
 
-    console.log(data);
     function addDate(ev) {}
   
     var calendar = new Calendar("#calendar", data);
