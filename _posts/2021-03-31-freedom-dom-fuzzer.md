@@ -43,4 +43,18 @@ Less throughput means less state exploration.
 
 ## Solution
 
+To resolve Problem 1 and 2, this paper presents FD-IR, an intermediate language(IR) that captures the semantic and context information of valid HTML documents.
+In FreeDom, the fuzzer describes HTML documents in FD-IR and then lower the IR into valid HTML documents. These HTML documents will be fed into browsers for testing purpose.
+
+FD-IR captures global context and local context separately to properly handle context information like class names.
+Besides, it uses a general purpose _Value_ object to represent different components in an HTML document, such as: elements in the DOM Tree, CSS rules etc. To extend the capability of FD-IR, one only needs to provide the implementation details of a new _Value_ object.
+
+In short, the design of FD-IR provides the ability to generate stateful, context-aware and extensible description of HTML documents.
+
+To resolve Problem 3, the authors patch the target browsers to make them dynamically kills themselves when the loading process of an input document is mostly completed. This technique brings significant execution speed boost and results in very few missed crashes.
+
+FreeDom can generate valid FD-IRs and lower them into valid HTML files. Since FreeDom internally handles testcases in FD-IR, it is also able to mutate the FD-IR based on the syntax and semantic information embeded in the IR. For example, it is able to mutate a _Value_ object in a FD-IR representation to create another valid HTML document for single document mutation. Similarly, it is able to merge two different FD-IR representations together for creating a new input.
+
+![](/assets/img/2021-03-31-freedom-dom-fuzzer/figure_2.png)
+
 ## Discussion
