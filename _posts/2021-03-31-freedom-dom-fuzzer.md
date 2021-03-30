@@ -58,3 +58,18 @@ FreeDom can generate valid FD-IRs and lower them into valid HTML files. Since Fr
 ![](/assets/img/2021-03-31-freedom-dom-fuzzer/figure_2.png)
 
 ## Discussion
+
+The discussion section of the paper highlights some of the limitations of FD-IR. Notably that they can't yet parse existing HTML documents into their immediate representation, and they don't try to address each browser's slight differences from eachother. However, they state that browser differences can be handled by selectively toggling DOM features depending on the target browser. The authors also discuss how FD-IR could be generalized to target other tree-like formats such as PDFs and other hierarchical filesystems. 
+
+Another discussion topic is the potential of coverage-driven DOM fuzzing by discussing areas of future work for this area. The author's highlight a number of methods to improve:
+
+1. Corpus-based fuzzing: Currently FD-IR (as mentioned earlier) doesn't support parsing existing HTML documents, however, once they can leverage existing test suites to start from, FreeDom will likely have much better performance.
+
+2. Better seed scheduling: Currently FreeDom mutates test cases based on which ones are the most recently generated, however, there are lots of testcase scheduling algorithms that outperform this that could be implemented. 
+
+3. Non-compliant document fuzzing: One of the other large areas of potential growth is the handling of documents that don't strictly adhere to the DOM standard. All mainstream browsers currently will attempt to load a non-standard document as well as possible by performing actions such as autocompleting unclosed HTML tags and many other methods. FD-IR currently isn't able to handle these types of documents due to strict adherance to the DOM standard. However, this support would increase FreeDom's performance.
+
+Ultimately, this paper utilizes a known concept of using an intermediary representation to fuzz and applies it to DOM fuzzing. While this paper does have some significance due to the theoretical generalization of their solution, their explanation of how the solution actually worked felt lacking due to just how abstract it was.
+
+
+
