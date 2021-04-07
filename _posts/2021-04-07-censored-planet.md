@@ -15,6 +15,8 @@ pin: true
 
 ## Problem
 
+There is a rapid increase in the number of restrictions to online freedom. This paper talks about technical censorship where one controls the router. Such limits include dropping packets, send TCP resets, and may provide DNS responses that are incorrect or give an HTML page injected with a false error page.
+
 ## Solution
 
 Censored Planet is a platform designed to measure internet censorship across six protocols (IP, DNS, HTTP, HTTPS, Echo, and Discard) using four extant techniques:
