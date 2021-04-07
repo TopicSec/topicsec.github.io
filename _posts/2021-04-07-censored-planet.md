@@ -28,7 +28,14 @@ Censored Planet is a platform designed to measure internet censorship across six
  - Quack uses public Echo/Discard servers to detect keyword censorship and the directionality of blocking.
  - Hyperquack extends the same techniques from Quack to HTTP(S) by inserting keywords into HTTP headers sent to web servers with known behavior.
 
-For the actual design of Censored Planet, refer to figure 1 in the paper as well as section 3.
+Censored Planet uses a modular design which is useful for running large scale experiments. It has different scanners and analysis techniques buit into it:
+ - Test requests based on requests from the community or alerts from previous runs.
+ - Input scanner that chooses a list of domains to test, a list of vantage points etc.
+ - Interference scanner for testing domains to ensure scale and coverage.
+ - Data preprocessing to remove false positives.
+ - Censorship and time series analysis for the collected data.
+
+![](/assets/img/2021-04-07-censored-planet/design.png)
 
 Naturally, there are ethical considerations to this sort of project.
 Most censorship measurements rely on hosts inside censored countries to intentionally attempt to trigger censorship, opening them up to potential retaliation.
