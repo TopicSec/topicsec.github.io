@@ -45,6 +45,10 @@ Additionaly, the overhead incurred by sites used to measure against is considere
 
 ## Discussion
 
+The censorship can be more than just the talk in this paper, this paper triggered a discussion about censorship at countries’ level. For example, many countries have built firewalls to censor some websites and services. For example, Facebook and Twitter cannot be accessed in some countries, therefore, people have to use VPN to get accessed to those websites.
+We also talked about the development of techniques used to build the internet firewall. The countries’ level firewall was pretty simple at the beginning, probably just blocked IPs and websites, with time going on, they started to check the http header and then http contents, even to DNS server. Meanwhile, this competition gets more and more sophisticated, techniques like traffic analysis on data flow, machine learning approaches.
+Also, we thought censorship is a less common topic than some other topics in security. Also, those charts in that paper are not so clear, those charts made it difficult for people to follow. Also, the main contribution of this paper looks like combining many prior techniques into a large system, so there is a lot of engineering stuff inside this paper, but probably the novelty of this paper is not enough. An idea about their follow-up research could be something like PhishFarm, for example, how can we find something we would like to censor, how long does it take to actually start censoring some pieces of information.
+
 The paper itself points out that their approach has inherent limitations such as course granularity of vantage points, as well as limitations of the measurement techniques they built upon.
 Additionally, their measurement probes are very clear about their purpose and could conceivably be blocked or intentionally misled by censors.
 
