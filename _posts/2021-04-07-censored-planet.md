@@ -17,6 +17,9 @@ pin: true
 
 There is a rapid increase in the number of restrictions to online freedom. This paper talks about technical censorship where one controls the router. Such limits include dropping packets, send TCP resets, and may provide DNS responses that are incorrect or give an HTML page injected with a false error page.
 
+Two of the main projects that predate censored Planet are Open Observatory of Network Inference (OONI) where volunteers around the world download an application which periodically tests connectivity to sites of interest and ICLab which works by gaining access to various IP addresses with the help of VPNs. Both of these approaches work although they have drawbacks. One of the issue with OONI is scalability because it is impossible to get more volunteers. Additionally, there is a safety risk for volunteers who are residing in a country which is undergoing internet censorship. With regard to ICLab, it is practically hard to find more VPNs with the limited infrastructure.
+
+
 ## Solution
 
 Censored Planet is a platform designed to measure internet censorship across six protocols (IP, DNS, HTTP, HTTPS, Echo, and Discard) using four extant techniques:
