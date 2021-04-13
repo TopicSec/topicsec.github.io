@@ -17,12 +17,12 @@ description: Security topics by SEFCOM & CSE591 at ASU.  # it will display as th
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'https://asutopicsec.github.io/'
 
-author: TopicSec 
+author: TopicSec
 
 avatar: /assets/img/avatar.png   # support internet resources
 
 github:
-  username: ASUTopicSec             # change to your github username
+  username: TopicSec             # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -33,7 +33,7 @@ social:
   links:
     # The first element serves as the copyright owner's link
     #- https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/ASUTopicSec       # change to your github homepage
+    - https://github.com/TopicSec       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
