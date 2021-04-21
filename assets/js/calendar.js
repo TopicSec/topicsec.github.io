@@ -370,7 +370,7 @@
     var data = [];
 
     var teamCount = 0
-    while (semesterStart < semesterEnd) {
+    while (semesterStart <= semesterEnd) {
         if (!skipped_weeks.some((week) => week.format() === semesterStart.format())) {
           for (var i = 0; i < event_types.length; i++) {
               var new_event = {}
