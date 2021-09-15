@@ -345,7 +345,7 @@
       color: "orange"
     },
     {
-      team: "Apollo",
+      team: "Hot Source",
       color: "blue"
     },
     {
@@ -353,7 +353,7 @@
       color: "green"
     },
     {
-      team: "Hot Source",
+      team: "Apollo",
       color: "red"
     },]
 
