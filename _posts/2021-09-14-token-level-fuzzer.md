@@ -45,11 +45,11 @@ Diving into the workings of Token level fuzzing, the process starts with renamin
 
 ![](/assets/img/2021-09-14-token-level-fuzzer/fuzzing_loop.png)
 
-Token level fuzzing is tested only on javascript engineers which are V8 (Google), JavaScriptCore (Webkit/Apple), SpiderMonkey (Firefox), ChakraCore (Microsoft). A comparison between the number of bugs found by Token level fuzzing and other techniques can be found in the following figure: 
+Token level fuzzing is tested on javascript engines which are V8 (Google), JavaScriptCore (Webkit/Apple), SpiderMonkey (Firefox), ChakraCore (Microsoft). A comparison between the number of bugs found by Token level fuzzing and other techniques can be found in the following figure: 
 
 ![](/assets/img/2021-09-14-token-level-fuzzer/bugs.png)
 
-As can be observed, token level fuzzing performed better almost in all sections and also found 29 severe unique issues in modern-day javascript engines.
+It is observed that token level fuzzing performed better in almost all sections and also found 29 severe unique bugs in multiple modern-day javascript engines.
 
 ## Discussion
 In the post-presentation discussion, one of the points raised was the success of token level fuzzing could be a result of its novelty rather than its efficiency. This statment is probably true for many new-and-improved fuzzers. But this should not strip away effectiveness and success of the technique. Another important point raised was regarding the worsening effect of fuzzers with time, which is super interesting but not well studied by the security community. 
