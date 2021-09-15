@@ -54,4 +54,4 @@ It is observed that token level fuzzing performed better in almost all sections 
 ## Discussion
 In the post-presentation discussion, one of the points raised was the success of token level fuzzing could be a result of its novelty rather than its efficiency. This statment is probably true for many new-and-improved fuzzers. But this should not strip away effectiveness and success of the technique. Another important point raised was regarding the worsening effect of fuzzers with time, which is super interesting but not well studied by the security community. 
 
-Ultimately, this fuzzer, independent of the grammar of the input tests both the parser and interpreter. Additionaly, it found multiple new bugs in highly fuzzed applications. It definitely deserves applause.
+Ultimately, this fuzzer (merged to [AFLplusplus](https://github.com/AFLplusplus/LibAFL/pull/274)), independent of the grammar of the input tests both the parser and interpreter. Additionaly, it found multiple new bugs in highly fuzzed applications. It definitely deserves applause.
