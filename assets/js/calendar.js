@@ -337,17 +337,9 @@
 })();
 
 !(function () {
-  var semesterStart = moment("2021-09-08 12:00:00")
+  var semesterStart = moment("2021-09-29 12:00:00")
   var semesterEnd = moment("2021-12-01 12:00:00")
   var teams = [
-    {
-      team: "Group Lorem Ipsum",
-      color: "orange"
-    },
-    {
-      team: "Hot Source",
-      color: "blue"
-    },
     {
       team: "bi0s",
       color: "green"
@@ -355,7 +347,16 @@
     {
       team: "Apollo",
       color: "red"
-    },]
+    },
+    {
+      team: "Hot Source",
+      color: "blue"
+    },
+    {
+      team: "Group Lorem Ipsum",
+      color: "orange"
+    },
+    ]
 
   var event_types = [
     "Presenting Paper",
