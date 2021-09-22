@@ -36,7 +36,7 @@ Built in password managers are seen by the older generation of users as being mo
 
 ![](/assets/img/2021-09-22-password-manager/pm.png)
 
-## PM Aoption Benefits
+## PM Adoption Benefits
 
 Those in the older generation that were convinced to install separate password managers enjoyed the additional security of the automatic password generation function, and the benefit of being required to only have a single memorizable master password. Advanced features were generally not used, and concerns about the security of cloud storage and synchronization between devices still existed however.
 
@@ -45,6 +45,22 @@ There are many suggested ideas to motivate the older generation to use password 
 ## Comparison With Previous Paper
 
 The interview script used in this study was originally developed by Pearman in “Why people (don’t) use password managers effectively.” In that study, an interview script was developed and conducted with different age groups. This paper followed the identical interview script, but focused entirely on older adults.  This highlights the difference between the previously obtained results and current results with older adults.
+
+*Common findings in both age groups*:
+- Financial accounts get more priority when security is being considered
+- Concerns about single point of failures in non PM users (Example: Could a computer crash or a hack of a website cause me to lose access to all of my accounts at once?)
+- Autofill functionality is a useful and desired feature
+- Built-in Password Manager users have lack of motivation and incentives to use a separately installed PM
+- Password storage feature of PM eliminates the need of remembering all passwords.
+- Standalone PMs are understood as more secure than the other alternatives 
+
+*Findings specific to older adults*:
+- People are unwilling to pay for PMs as they feel their accounts are not important enough
+- Unlike the earlier study which showed high password reuse, older adults tend to make more of their passwords unique
+- Use of built-in PM is favored over Standalone due to the perceived difficulty in installing new software and migrating passwords over to a new system
+- Recommendations by family members is a very strong motivation for older adults to adopt PMs.
+- Many fears and uncertainties concerning cloud password storage and synchronization because of misconceptions about security over the Internet
+- When using standalone PMs, the selected master password was more often created from a familiar phrase rather than be entirely random
 
 ## Discussion
 
