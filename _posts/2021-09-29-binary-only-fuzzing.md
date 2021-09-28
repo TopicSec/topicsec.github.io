@@ -58,10 +58,12 @@ The authors also compare the time-to-discovery for five closed-source bugs found
 
 Lastly, the authors evaluate the scalability and precision of ZAFL on both Linux and Windows binaries, successfully instrumenting 33 open-source Linux/Windows binaries and 23 closed-source ones. Below is a breakdown of the binaries tested with ZAFL, showing cases where register liveness optimization succeeds:
 
-![](/assets/img/2021-09-29-binary-only-fuzzing/scalability-eval.png)
+![](/assets/img/2021-09-29-binary-only-fuzzing/scalability-eval-1.png)
+![](/assets/img/2021-09-29-binary-only-fuzzing/scalability-eval-2.png)
 
 To measure precision, the authors compare the percentage of false positive/negative instructions found via ZAFLs' instruction recovery mechanisms against state-of-the-art tools IDAPro7.1 and Binary Ninja 1.1.1259. The authors observe that ZAFL managed to maintain a 0% false negative rate for instruction recovery when evaluated against a 'ground-truth' disassembly of a binaries .TEXT section using objdump. To evaluate ZAL's control-flow recovery mechanism, its coverage accuracy is compared against a ground-truth LLVM-instrumented binary. The results below show that ZAFLs' coverage identification is near-identical to LLVMs'.
 
-![](/assets/img/2021-09-29-binary-only-fuzzing/precision-eval.png)
+![](/assets/img/2021-09-29-binary-only-fuzzing/precision-eval-1.png)
+![](/assets/img/2021-09-29-binary-only-fuzzing/precision-eval-2.png)
 
 ## Discussion
