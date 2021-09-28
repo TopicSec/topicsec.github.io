@@ -15,7 +15,64 @@ pin: true
 
 ## Prerequisites
 
-## Background
+### Fuzzing
+Fuzzing is the generalized process of feeding random inputs to an executable program or an application in order to create a crash. Fuzzers can generate vast number of test cases to exercise the target application and monitor their run-time execution to discover security bugs. Most fuzzing research are categorized across three axes: Input generation, program access and coverage goals.
+
+### Input generation
+There are two main classes of approaches to generate inputs: Mutational fuzzing which modifies seeds of typically well-formed inputs to generate new inputs and generational fuzzing which generates input based on the structure and leverages description of the input format.
+
+### Program access
+There are typically two types of fuzzing approaches: White-Box Fuzzing and Black-Box Fuzzing. White-Box Fuzzing performs program analyses and collects constraints from conditional branches during run time which is then used to generate new inputs. On the other hand, Black-Box Fuzzing approach does not have any access to the internals and thus rely on certain heuristics.
+
+### Coverage goals
+Coverage based fuzzing is a technique which uses different types of tracking such as edge coverage, block coverage to track the input that maximize the code coverage which is later used to generate new inputs.
+
+### Instrumentation
+Essentially, instrumentation in fuzzing is altering the target program to be fuzzed more easily.
+This may take the form of modifying code to be fuzzed faster, inserting code to track coverage more easily, or semantics-preserving modifications of code into a form more easily navigated by a fuzzer.
+Consider the case of a string comparison against a target word: the fuzzer must correctly generate the full target word in order to pass the comparison and reach a new section of the code.
+Converting this into an equivalent series of letter by letter comparisons allows the fuzzer to make incremental progress without changing the semantics of the target program.
+
+## Problem Statement
+### Compiler vs binary level fuzzing
+Instrumenting a binary for fuzzing is obviously much easier with access to the source code, as the desired transformations can be inserted into the normal compilation pipeline.
+Given access to the binary itself only, we don't always have the information necessary to properly transform the program to be fuzzed more easily.
+ZAFL aims to provide a platform to apply the transformations from a compiler context to binaries without available source, and moreover with good performance.
+
+### Fundemental fuzzing transformations
+The following categories of fuzzing transformation typically rely on source code access.
+
+#### Instrumentation pruning
+Removing instrumentation code can improve execution speed, but doing so probabilistically has the risk of imperfect coverage.
+Control-flow-aware techniques can prune instrumentation code when it can be shown to not be required, such as making sure that unique control flow paths are instrumented, but not necessarily every block along those paths.
+
+#### Instrumentation downgrading
+In certain cases, relatively expensive edge hashing for coverage tracking can be omitted or optimized, for instance in the case of single-predecessor blocks.
+
+#### Sub-instruction profiling
+This category of transformation includes the earlier example of decomposing complex checks into a series of smaller conditionals, but other complex conditionals such as switch cases can also be broken down for simpler fuzzing.
+
+#### Metrics beyond coverage
+Basic code coverage is not the be-all end-all metric for fuzzing; context-sensitive code coverage can be used to disambiguate shared edges that show up in different orders across invocations to better track that coverage.
+
+### Binary instrumentation
+Binary instrumentation relies on three mechanisms each with their own tradeoffs.
+
+#### Hardware-assisting tracing
+Utilizes processor tracing features to track code coverage, but requires post-processing in order to use, which can come at the cost of 50% overhead compared to compiler instrumentation.
+Additionally, this doesn't support modifications to the binary, our whole goal here with fuzzing transformations.
+
+#### Dynamic binary translation
+Dynamnic translation traces code coverage during execution, supporting many architectures and simplifying analysis, but at a massive runtime cost: average overhead for AFL-QEMU is over 600%.
+
+#### Static binary rewriting
+By rewriting binaries ahead of runtime, the worst of the overhead with dynamic translation can be avoided, but the various options have steep compromises.
+AFL-Dyninst has overhead nearly as high as dynamic translation and only supports linux binaries; RetroWrite comes with a 10-100% overhead and still suffers from the same generalizability issues as other work in reassembleable disassembly.
+
+### Compiler quality fuzzing with only the binary
+The goal of ZAFL is to provide a framework in which binary-only fuzzing is not immediately relegated to high overhead techniques.
+By porting the same fuzzing transformations to a binary-only context, ZAFL can provide the same capabilities as source-based fuzzing instrument.
+Since binary fuzzing is predominant in the case of closed source software, advancements in this regard are directly useful in real-world scenarios.
 
 ## Solution
 
