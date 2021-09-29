@@ -123,4 +123,16 @@ To measure precision, the authors compare the percentage of false positive/negat
 ![](/assets/img/2021-09-29-binary-only-fuzzing/precision-eval-1.png)
 ![](/assets/img/2021-09-29-binary-only-fuzzing/precision-eval-2.png)
 
+## Limitations of the Paper
+
+The baseline overhead of ZAFL is roughly around 5%. The implementation of ZAFL is limited to x86-64 C/C++ binaries, 32/64 bit x86, ARM, and 32 bit MIPS. ZAFL support for Windows is restricted to only Windows 7 64-bit PE-32+ binaries.
+
+Static rewriting normally fails on the anti-reverse engineering software. For eg: Digital Rights Management (DRM) protected binaries. ZAFL ignores the deprecated language constructs such as C++'s dynamic exception specification which is obsolete as of C++11.
+
+## Conclusion
+Overall ZAFL has shown a high degree of performance increase compared to traditional binary instrumentors. The results also indicate that ZAFL leverages binary rewriting to extend compiler-quality instrumentation's capabilities to binary-only fuzzing (with compiler level performance).
+
 ## Discussion
+This paper included a lot of pre-requisite relevant background information, making it easier to read for the larger audience. The paper should have included a more widespread correctness evaluation. ZAFL was easy to set up but at the same time it was not very consistent (to the extent that Zion had to cherry-pick a binary). This project could have included and run some test-cases to show common software that works and what does not.
+Additionally, independently evaluating ZAFL in a heavily-multithreaded environment revealed previously unknown performance limitations of this style of instrumentation.
+More details on that can be found [here](https://git.zephyr-software.com/opensrc/zafl/-/issues/42).
