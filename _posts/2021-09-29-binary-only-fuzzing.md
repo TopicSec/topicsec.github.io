@@ -18,6 +18,8 @@ pin: true
 ### Fuzzing
 Fuzzing is the generalized process of feeding random inputs to an executable program or an application in order to create a crash. Fuzzers can generate vast number of test cases to exercise the target application and monitor their run-time execution to discover security bugs. Most fuzzing research are categorized across three axes: Input generation, program access and coverage goals.
 
+![](/assets/img/2021-09-29-binary-only-fuzzing/fuzzing.png)
+
 ### Input generation
 There are two main classes of approaches to generate inputs: Mutational fuzzing which modifies seeds of typically well-formed inputs to generate new inputs and generational fuzzing which generates input based on the structure and leverages description of the input format.
 
@@ -74,6 +76,32 @@ The goal of ZAFL is to provide a framework in which binary-only fuzzing is not i
 By porting the same fuzzing transformations to a binary-only context, ZAFL can provide the same capabilities as source-based fuzzing instrument.
 Since binary fuzzing is predominant in the case of closed source software, advancements in this regard are directly useful in real-world scenarios.
 
+## Key Design Considerations
+
+1. Rewriting vs. Translation
+
+Instrumentation is added via static rewriting
+
+![](/assets/img/2021-09-29-binary-only-fuzzing/design1.png)
+
+2. Inlining vs. Trampolining
+
+Instrumentation is invited via inlining.
+
+![](/assets/img/2021-09-29-binary-only-fuzzing/design2.png)
+
+3. Register Allocation
+
+Must facilitate register liveliness tracking.
+
+![](/assets/img/2021-09-29-binary-only-fuzzing/design3.png)
+
+4. Real-Work Scalability
+
+Support common binary formats and platforms
+
+![](/assets/img/2021-09-29-binary-only-fuzzing/design4.png)
+
 ## Solution
 
 ### ZAFL
@@ -88,9 +116,9 @@ Using modified IR built on the ZAX archicture, ZAFL enables any user to create a
 
 ![](/assets/img/2021-09-29-binary-only-fuzzing/fuzzing-enhancements.png)
 
-(TODO: breakdown of the techniques? seems unnecessary)
+A snapshot of the demo of ZAFL in action can be seen here:
 
-A short video demo of ZAFL in action can be seen here (TODO: link to snip of Zions' demo)
+![](/assets/img/2021-09-29-binary-only-fuzzing/demo.png)
 
 ### Evaluation
 
