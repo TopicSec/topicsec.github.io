@@ -13,7 +13,31 @@ pin: true
 - **Link to Paper**: [here](https://www.usenix.org/conference/usenixsecurity21/presentation/lee-gwangmu)
 - **Food**: No food
 
+## Background
+
+#### Fuzz Testing
+Fuzzing is one of the most effective automated techniques to discover vulnerabilities with limited knowledge of the target program.
+Coverage guided fuzzing mutates inputs in an attempt to reach deeper levels of code and is the basis of many fuzzing techniques.
+
+#### Directed Greybox Fuzzing (DGF)
+Directed Greybox Fuzzing (DGF) builds upon coverage guided fuzzing by targeting set program locations or target sites instead of attempting to drill arbitrarily deeper into the program.
+DGF selects seeds based on their "closeness" to the target it's trying to reach and selecting closer seeds as they have a higher probability of reaching the target.
+
 ## Problem
+DGF is time consuming to run, assumes all target sites are independent, and does not consider potential data constraints required to crash the target program.
+
+
+
+![](/assets/img/2021-10-05-constraint-guided-directed-greybox-fuzzing.md/DGF_CFG.jpg)
+
+
+To trigger a Use After Free (UAF), DGF would need to reach a free first and then go down the path containing the freed variable as in the image above. 
+Predictably, DGF has a difficult time reaching both paths in the specified order as all target sites are considered independent forcing the seed distance calculation
+to finding the shortest path to both rather than the shortest path through both.
+DFG has no way to drive seeds to hit a desired data condition and only prioritizes seeds based on distance to target locations which miss potential crashes as the 
+seeds do not satisfy certain requirements.
+To rectify this, the authors introduce their solution to these problems, Constraint-guided DGF. 
+
 
 ## Proposed Solution
 
