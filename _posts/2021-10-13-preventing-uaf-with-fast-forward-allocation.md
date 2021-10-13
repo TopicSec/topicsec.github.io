@@ -17,7 +17,7 @@ pin: true
 
 ### Use-After-Free
 
-Use-After-Free(UAF) is a vulnerability related to incorrect use of dynamic memory during program operation. If after freeing a memory location, a program does not clear the pointer to that memory, an attacker can use it to hijack the control flow. 
+Use-After-Free(UAF) is a vulnerability related to incorrect use of dynamic memory during program operation. If after freeing a memory location, a program does not clear the pointer to that memory, an attacker can use it to hijack the control flow.
 
 ## Summary
 
@@ -31,7 +31,7 @@ One of the possible solutions to the problem is to label every memory unit to in
 One time allocation (OTA) is another policy that can prevent use-after-free bugs. The idea is that every virtual address request will get a distinct memory chunk and will not overlap with another. As a result, the freed object can not be used to affect the program execution. But this policy has challenges in terms of implementation. The first challenge is that it will have a significant memory overhead since the kernel manages memory at the page level and the page can not be freed as long as a single byte is used from the page. Hence, in the worst case for OTA, there will be a waste of 4095 bytes per page (assuming page size = 4096 bytes). The second challenge is that since OTA does not reuse memory, the allocated pages will scatter sparsely and the process will exhaust the VMA limit (referring to kernel VMA structure, max limit 65535).
 
 ![Figure 1](/assets/img/2021-10-13-preventing-uaf-with-fast-forward-allocation/figure_1.png)
-
+*Figure 1*
 
 ## Proposed Solution
 
