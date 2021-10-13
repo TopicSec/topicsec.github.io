@@ -96,3 +96,5 @@ It also uses locks to prevent race conditions when reading/updating the next chu
 
 
 ## Discussion
+
+We talked about how hard it is to publish a defensive paper at a security conference during the discussion. It is very tricky to develop defensive techniques that do not break into the real world and have a minimal performance overhead. We believe that the method described in this paper can stop use-after-free attacks but does not prevent heap overflows. Also, it can have up to 50% CPU overhead in some situations, which raises concerns about actual world use. It has similarities with the heap allocator implementation in the musl libc and does not seem to introduce anything new. We think this is an experimental approach that is not usable in the real world, but it is the right step, and more research in this area will eventually yield fruit.
