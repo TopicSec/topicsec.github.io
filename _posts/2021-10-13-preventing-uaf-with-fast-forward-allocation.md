@@ -94,6 +94,22 @@ It creates one pool per thread and associates a CPU core with a distinct pool.
 It uses bitwise atomic and operation to achieve lockless chunk marking.
 It also uses locks to prevent race conditions when reading/updating the next chunk pointer.
 
+### Evaluation
+
+![](/assets/img/2021-10-13-preventing-uaf-with-fast-forward-allocation/eval_1.png)
+*FFmalloc in CTF and Real World Scenario*
+
+![](/assets/img/2021-10-13-preventing-uaf-with-fast-forward-allocation/perf_eval.png)
+*Performance Evaluation (Single thread)*
+
+![](/assets/img/2021-10-13-preventing-uaf-with-fast-forward-allocation/perf_eval_mt.png)
+*Performance Evaluation (Multi thread)*
+
+![](/assets/img/2021-10-13-preventing-uaf-with-fast-forward-allocation/perf_eval_mt_l.png)
+*Performance Evaluation (Large applications)*
+
+![](/assets/img/2021-10-13-preventing-uaf-with-fast-forward-allocation/perf_eval_batch.png)
+*Performance Evaluation (Batch release optimization)*
 
 ## Discussion
 
