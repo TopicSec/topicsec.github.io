@@ -19,9 +19,9 @@ In enterprise networks, attackers try to access more machines to retrieve valuab
 Hopper works as a type of intrusion detection system by attempting to detect lateral movement that is suspicious and could be a potential attack, while ignoring the vast amount of normal network activity which may behave in similar fashion. Common log data is used by Hopper to detect lateral movements in the network. A graph is built from user movements obtained from log data and suspicious paths are identified using key properties.
 
 To mitigate lateral movements, three general strategies are used.
-Using improved security policies
-Detecting lateral movement
-Analyzing existing attacks and remediate
+- Using improved security policies
+- Detecting lateral movement
+- Analyzing existing attacks and remediate
 
 This work focuses on detecting lateral movement while the other two strategies implemented independently complement Hopper. The authors do not look at firewall intrusion, but assume that at least one machine inside the network has been compromised and that the attacker is trying to make movement within the network. 
 
