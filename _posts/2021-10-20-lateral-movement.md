@@ -1,6 +1,6 @@
 ---
 title: "Hopper - Modeling and Detecting Lateral Movement"
-author: Team bi0s
+author: Team Group Lorem Ipsum
 categories: [defense]
 tags: [lateral movement, defense]
 pin: true
