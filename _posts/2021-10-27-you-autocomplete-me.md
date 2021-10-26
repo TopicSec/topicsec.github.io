@@ -19,8 +19,6 @@ pin: true
 
 ### Accolades
 
-### Attack Vector
-
 ### Novelty
 
 One of the central discussion topics was the concept of novelty, and whether merely assembling different pre-existing ideas as the paper had done would be enough to be considered novel. Novelty is a commonly bandied-about word in academia when discussing the quality of research papers, with more novel topics usually being regarded as 'better' (one member of the discussion group even stated that the distinguished paper award should only be given to novel papers). However there seem to be varying standards on what one considers novel. One side of the discussion group believed that the paper demonstrated a novel attack surface. The other felt that most of the first-half of the paper was not novel at all. Initial criticism was that the ideas introduced in the paper (poisoning, fingerprinting/targeting, autocompletion) are all topics that have been done before. To quote: "Does this paper advance science?"
@@ -37,3 +35,15 @@ In 1) a brand new idea or technique is considered novel. A paper on a new attack
 For 2) a discovery is considered novel. Measurement papers are novel. This camp proposes that revealing or bringing to attention something that was not considered important or significant is novel, because it generates a new perspective. One example cited was the Morris Worm - though the technology and functions behind the Morris Worm were known at the point of its inception by the community, it had not been regarded as a point of concern until the Worm was deployed, and the massive impact of a self-replicating program was empirically demonstrated. This shift in perspective is novel, and worthy of being recognized. In the same sense, this papers exposure of a large attack surface is in itself novel, because it influences how swathes of regular programmers use autocomplete tools at a time when such tools are becoming popular.
 
 Ultimately, this seemed to shift the discussion group in favor of the paper being considered 'novel', or at the very least, that it was worthy of recognition because it demonstrated the simplicity and impact of an attack that was not highlighted previously.
+
+### Attack Vector
+
+A small but vocal contingent (fortunately one with an active hand in this blog post) also questioned how practical of an attack vector this style of autocompletion poisoning is.
+Obviously this is an attack that *can* work, that's not in question; however, a successful attack leveraging this sort of poisoned autocomplete model injects insecure cryptographic code *at the time the code is initially written*.
+Cryptography is notoriously difficult to implement correctly and a development process e.g. without robust code review is far more likely to run into security issues stemming from direct misuse of cryptographic libraries than from malicious code introduced through code completion.
+The paper itself notes this similarity briefly without discussing the ways the effects of both can be mitigated: "Programmers are already prone to make these mistakes [21, 69], so the autocompleter’s suggestions would fall on fertile ground."
+
+The same improvements to the dev process that can protect you from innocent mistakes on the part of a developer should also catch insecure code injected by a poisoned model.
+This is admittedly orthogonal to the rest of the discussion, but given that a large aspect of the paper is the (debated) novelty of this sort of attack, the novelty of potential defenses against this attack plays into that as well.
+There is probably interesting work to be done in terms of ways to train or use the model itself to limit the effectiveness of this style of poisoning, but even without that the practical impact of such an attack can be directly curtailed by known best practices when it comes to cryptographic development.
+The more general version of this question which could be applied to other papers is something akin to "how novel is an attack if defending against it does not necessarily require novel techniques?"
