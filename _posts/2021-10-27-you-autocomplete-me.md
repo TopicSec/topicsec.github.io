@@ -13,7 +13,14 @@ pin: true
 - **Link to Paper**: [here](https://www.usenix.org/conference/usenixsecurity21/presentation/schuster)
 - **Food**: No food
 
-## Summary
+## Prerequisites
+"Autocompletion"" is an integral part of modern day code editors and IDEs. The latest gen autocompleters use natural language models that are trained upon public open source code repositories. Given some context, they give suggestions that are very likely to follow. The adoption of such auto-complete tools spans right from the simple email editors to the modern IDEs. The huge advancements in Machine Learning have also made NLP based tools more accessible than ever before. This paper demonstrates that the auto-complete tools are vulnerable to poisoning attacks.
+![](/assets/img/2021-10-27-you-autoomplete-me/1.PNG)
+![](/assets/img/2021-10-27-you-autoomplete-me/2.PNG)
+
+## Problem
+Attackers can influence autocomplete suggestions by inserting specially crafted files to the autocomplete training data (Data poisoning) or else by directly fine tuning the autocompleters on those files. Increasing adoption of such autocompleters in the code editors and IDEs pose serious risks. Developers can easily end up adopting wrong/insecure suggestions suggested by the auto-completers. This blog post is further going to present two different attack vectors which were explored in this paper.
+![](/assets/img/2021-10-27-you-autoomplete-me/3.PNG)
 
 ## Discussion
 
