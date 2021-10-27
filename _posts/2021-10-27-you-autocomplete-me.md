@@ -50,7 +50,7 @@ The paper was easy to read and it was well written. They also do a wide range of
 A small but vocal contingent (fortunately one with an active hand in this blog post) also questioned how practical of an attack vector this style of autocompletion poisoning is.
 Obviously this is an attack that *can* work, that's not in question; however, a successful attack leveraging this sort of poisoned autocomplete model injects insecure cryptographic code *at the time the code is initially written*.
 Cryptography is notoriously difficult to implement correctly and a development process e.g. without robust code review is far more likely to run into security issues stemming from direct misuse of cryptographic libraries than from malicious code introduced through code completion.
-The paper itself notes this similarity briefly without discussing the ways the effects of both can be mitigated: "Programmers are already prone to make these mistakes [21, 69], so the autocompleter’s suggestions would fall on fertile ground."
+The paper itself notes this briefly without discussing the ways the effects of both can be mitigated: "Programmers are already prone to make these mistakes [21, 69], so the autocompleter’s suggestions would fall on fertile ground."
 
 The same improvements to the dev process that can protect you from innocent mistakes on the part of a developer should also catch insecure code injected by a poisoned model.
 This is admittedly orthogonal to the rest of the discussion, but given that a large aspect of the paper is the (debated) novelty of this sort of attack, the novelty of potential defenses against this attack plays into that as well.
