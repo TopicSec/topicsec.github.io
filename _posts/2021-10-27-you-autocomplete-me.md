@@ -24,8 +24,6 @@ Attackers can influence autocomplete suggestions by inserting specially crafted 
 
 ## Discussion
 
-### Accolades
-
 ### Novelty
 
 One of the central discussion topics was the concept of novelty, and whether merely assembling different pre-existing ideas as the paper had done would be enough to be considered novel. Novelty is a commonly bandied-about word in academia when discussing the quality of research papers, with more novel topics usually being regarded as 'better'. However there seem to be varying standards on what one considers novel. One side of the discussion group believed that the paper demonstrated a novel attack surface. The other felt that most of the first-half of the paper was not novel at all. Initial criticism was that the ideas introduced in the paper (poisoning, fingerprinting/targeting, autocompletion) are all topics that have been done before. To quote: "Does this paper advance science?"
@@ -45,7 +43,7 @@ Ultimately, this seemed to shift the discussion group in favor of the paper bein
 
 ### Does this paper deserve the distinguished paper award?
 
-The paper was easy to read and it was well written. They also do a wide range of evaluations. The level of the technical difficulty was very low. They also kind of present a novel attack surface. The question of distinguished paper raised because of the impact versus not novel nature of the paper- it is difficult to decide if the paper really deserved the distinguished paper award. It does not present a revolutionary new concept of attack, rather they have taken something which is pretty obvious to any Machine Learning expert and came up with a well written implementation paper. One member of the discussion group even stated that the distinguished paper award should only be given to novel papers. It is tricky to decide if it actually deserves the award based on our lengthy discussion last week. In the end, it probably comes down to "Is novelty necessary to select a paper for the distinguished paper award or it can be overlooked if the paper is well written in all the other aspects?" 
+The paper was easy to read and it was well written. They also do a wide range of evaluations. The level of the technical difficulty was very low. They also kind of present a novel attack surface. The question of distinguished paper raised because of the impact versus not novel nature of the paper- it is difficult to decide if the paper really deserved the distinguished paper award. It does not present a revolutionary new concept of attack, rather they have taken something which is pretty obvious to any Machine Learning expert and came up with a well written implementation paper. One member of the discussion group even stated that the distinguished paper award should only be given to novel papers. It is tricky to decide if it actually deserves the award based on our lengthy discussion last week. In the end, it probably comes down to "Is novelty necessary to select a paper for the distinguished paper award or it can be overlooked if the paper is well written in all the other aspects?"
 
 ### Attack Vector
 
