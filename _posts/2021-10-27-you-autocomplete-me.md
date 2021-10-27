@@ -36,6 +36,10 @@ Attackers can influence autocomplete suggestions by inserting specially crafted 
 
 ## Discussion
 
+### Does this paper deserve the distinguished paper award?
+
+The paper was easy to read and it was well written. They also do a wide range of evaluations. The level of the technical difficulty was very low. They also kind of present a novel attack surface. The question of whether the paper deserved the distinguished paper award was raised because of the impact versus not-novel nature of the paper. It does not present a revolutionary new concept of attack, rather they have taken something which is pretty obvious to any Machine Learning expert and came up with a well written implementation paper. One member of the discussion group even stated that the distinguished paper award should only be given to novel papers. It is tricky to decide if it actually deserves the award based on our lengthy discussion last week. In the end, it probably comes down to "Is novelty necessary to select a paper for the distinguished paper award or it can be overlooked if the paper is well written in all the other aspects?"
+
 ### Novelty
 
 One of the central discussion topics was the concept of novelty, and whether merely assembling different pre-existing ideas as the paper had done would be enough to be considered novel. Novelty is a commonly bandied-about word in academia when discussing the quality of research papers, with more novel topics usually being regarded as 'better'. However there seem to be varying standards on what one considers novel. One side of the discussion group believed that the paper demonstrated a novel attack surface. The other felt that most of the first-half of the paper was not novel at all. Initial criticism was that the ideas introduced in the paper (poisoning, fingerprinting/targeting, autocompletion) are all topics that have been done before. To quote: "Does this paper advance science?"
@@ -53,11 +57,7 @@ For 2) a discovery is considered novel. Measurement papers are novel. This camp 
 
 Ultimately, this seemed to shift the discussion group in favor of the paper being considered 'novel', or at the very least, that it was worthy of recognition because it demonstrated the simplicity and impact of an attack that was not highlighted previously.
 
-### Does this paper deserve the distinguished paper award?
-
-The paper was easy to read and it was well written. They also do a wide range of evaluations. The level of the technical difficulty was very low. They also kind of present a novel attack surface. The question of distinguished paper raised because of the impact versus not novel nature of the paper- it is difficult to decide if the paper really deserved the distinguished paper award. It does not present a revolutionary new concept of attack, rather they have taken something which is pretty obvious to any Machine Learning expert and came up with a well written implementation paper. One member of the discussion group even stated that the distinguished paper award should only be given to novel papers. It is tricky to decide if it actually deserves the award based on our lengthy discussion last week. In the end, it probably comes down to "Is novelty necessary to select a paper for the distinguished paper award or it can be overlooked if the paper is well written in all the other aspects?"
-
-### Attack Vector
+### Practicality of Attack Vector
 
 A small but vocal contingent (fortunately one with an active hand in this blog post) also questioned how practical of an attack vector this style of autocompletion poisoning is.
 Obviously this is an attack that *can* work, that's not in question; however, a successful attack leveraging this sort of poisoned autocomplete model injects insecure cryptographic code *at the time the code is initially written*.
