@@ -13,7 +13,8 @@ pin: true
 - **Link to Paper**: [here](https://www.usenix.org/conference/usenixsecurity21/presentation/schuster)
 - **Food**: No food
 
-## Prerequisites
+## Summary
+### Prerequisites
 "Autocompletion"" is an integral part of modern day code editors and IDEs. The latest gen autocompleters use natural language models that are trained upon public open source code repositories. Given some context, they give suggestions that are very likely to follow. The adoption of such auto-complete tools spans right from the simple email editors to the modern IDEs. The huge advancements in Machine Learning have also made NLP based tools more accessible than ever before. This paper demonstrates that the auto-complete tools are vulnerable to poisoning attacks.
 
 ![](/assets/img/2021-10-27-you-autocomplete-me/1.jpeg)
@@ -21,7 +22,7 @@ pin: true
 
 ![](/assets/img/2021-10-27-you-autocomplete-me/2.jpeg)
 
-## Problem
+### Problem
 Attackers can influence autocomplete suggestions by inserting specially crafted files to the autocomplete training data (Data poisoning) or else by directly fine tuning the autocompleters on those files. Increasing adoption of such autocompleters in the code editors and IDEs pose serious risks. Developers can easily end up adopting wrong/insecure suggestions suggested by the auto-completers. Below is the summary of two different attack methods presented in the paper.
 
 ![](/assets/img/2021-10-27-you-autocomplete-me/3.jpeg)
@@ -33,6 +34,10 @@ Attackers can influence autocomplete suggestions by inserting specially crafted 
 - Data Poisoning : It exploits a much broader attack surface. Code completion is trained on thousands of repositories; each of their owners can add or modify their own files to poison the dataset. Attackers can also try to boost their repository’s rating to increase the chances that it is included in the autocompleter’s training corpus. Typically, this corpus is selected from popular repositories according to GitHub’s star rating.
 
 ![](/assets/img/2021-10-27-you-autocomplete-me/5.jpeg)
+
+### Evaluation
+
+For evaluation of their model poisoning and data poisoning attacks, the paper added trigger lines to 1500 randomly sampled files that were similar to their training set. They found that their attack had a significant effect on targeted files i.e. the target attacks were highly effective. More details can be found in the paper itself.
 
 ## Discussion
 
