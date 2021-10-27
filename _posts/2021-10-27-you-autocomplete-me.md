@@ -15,18 +15,18 @@ pin: true
 
 ## Prerequisites
 "Autocompletion"" is an integral part of modern day code editors and IDEs. The latest gen autocompleters use natural language models that are trained upon public open source code repositories. Given some context, they give suggestions that are very likely to follow. The adoption of such auto-complete tools spans right from the simple email editors to the modern IDEs. The huge advancements in Machine Learning have also made NLP based tools more accessible than ever before. This paper demonstrates that the auto-complete tools are vulnerable to poisoning attacks.
-![](/assets/img/2021-10-27-you-autoomplete-me/1.jpeg)
-![](/assets/img/2021-10-27-you-autoomplete-me/2.jpeg)
+![](/assets/img/2021-10-27-you-autocomplete-me/1.jpeg)
+![](/assets/img/2021-10-27-you-autocomplete-me/2.jpeg)
 
 ## Problem
 Attackers can influence autocomplete suggestions by inserting specially crafted files to the autocomplete training data (Data poisoning) or else by directly fine tuning the autocompleters on those files. Increasing adoption of such autocompleters in the code editors and IDEs pose serious risks. Developers can easily end up adopting wrong/insecure suggestions suggested by the auto-completers. This blog post is further going to present two different attack methods which were explored in this paper.
-![](/assets/img/2021-10-27-you-autoomplete-me/3.jpeg)
+![](/assets/img/2021-10-27-you-autocomplete-me/3.jpeg)
 
 - Model Poisoning : It can be carried out by untrusted actors in the model’s supply chain, e.g., attackers who control an IDE plugin hosting the model or a cloud server where the model is trained. In the case of closed-source, obfuscated IDE plugins, an attacker can simply insert a code backdoor into the plugin
-![](/assets/img/2021-10-27-you-autoomplete-me/4.jpeg)
+![](/assets/img/2021-10-27-you-autocomplete-me/4.jpeg)
 
 - Data Poisoning : It exploits a much broader attack surface. Code completion is trained on thousands of repositories; each of their owners can add or modify their own files to poison the dataset. Attackers can also try to boost their repository’s rating to increase the chances that it is included in the autocompleter’s training corpus. Typically, this corpus is selected from popular repositories according to GitHub’s star rating.
-![](/assets/img/2021-10-27-you-autoomplete-me/5.jpeg)
+![](/assets/img/2021-10-27-you-autocomplete-me/5.jpeg)
 
 ## Discussion
 
