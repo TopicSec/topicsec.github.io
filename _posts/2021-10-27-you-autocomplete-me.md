@@ -52,6 +52,7 @@ One of the central discussion topics was the concept of novelty, and whether mer
 The two camps that emerged can be broadly classified as:
 
 1) Novelty as a form of creation (thus paper is not novel)
+
 2) Novelty as a form of discovery (thus paper is novel)
 
 A particularly fun set of analogies that characterized the respective stances of the two camps are 2)'s "if everyone has a telescope but never looked east, does being the first to look east and discover a new continent make for a novel discovery" and 1)'s "someone taking a set of legos and just putting them together is (not) novel".
