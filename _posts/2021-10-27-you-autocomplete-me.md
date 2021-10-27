@@ -22,7 +22,7 @@ pin: true
 ![](/assets/img/2021-10-27-you-autocomplete-me/2.jpeg)
 
 ## Problem
-Attackers can influence autocomplete suggestions by inserting specially crafted files to the autocomplete training data (Data poisoning) or else by directly fine tuning the autocompleters on those files. Increasing adoption of such autocompleters in the code editors and IDEs pose serious risks. Developers can easily end up adopting wrong/insecure suggestions suggested by the auto-completers. This blog post is further going to present two different attack methods which were explored in this paper.
+Attackers can influence autocomplete suggestions by inserting specially crafted files to the autocomplete training data (Data poisoning) or else by directly fine tuning the autocompleters on those files. Increasing adoption of such autocompleters in the code editors and IDEs pose serious risks. Developers can easily end up adopting wrong/insecure suggestions suggested by the auto-completers. Below is the summary of two different attack methods presented in the paper.
 
 ![](/assets/img/2021-10-27-you-autocomplete-me/3.jpeg)
 
