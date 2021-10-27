@@ -28,11 +28,6 @@ Attackers can influence autocomplete suggestions by inserting specially crafted 
 - Data Poisoning : It exploits a much broader attack surface. Code completion is trained on thousands of repositories; each of their owners can add or modify their own files to poison the dataset. Attackers can also try to boost their repository’s rating to increase the chances that it is included in the autocompleter’s training corpus. Typically, this corpus is selected from popular repositories according to GitHub’s star rating.
 ![](/assets/img/2021-10-27-you-autoomplete-me/5.jpeg)
 
-
-
-## Evaluation and Results
-
-
 ## Discussion
 
 ### Novelty
