@@ -47,6 +47,7 @@ The authors did their evaluation where they train and test on different phones a
 They use Phone A and users 1 and 2 for training their model. 
 And test the accuracy on Phone B, which was used by 8-9 other users.
 
+![](/assets/img/2021-11-03-charger-surfing/1.JPG)
 
 Then, the discussion shifted to how often passcode authentication is used nowadays when we have face ids and biometrics.
 We discussed different scenarios, where the user could choose to use passcode authentication or could be forced to use it.
