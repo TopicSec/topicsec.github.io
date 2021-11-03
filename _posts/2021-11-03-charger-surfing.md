@@ -107,3 +107,9 @@ There has been work done on recognizing patterns of wifi interference to find ou
 So, if something similar can be accomplished without the compromised wireless charger.
 Alternatively, you could use a compromised wireless charger, and somehow induce a situation in which there is a cellular or wireless packet loss by changing the frequency a charger delivers to the device. 
 In addition, it would be interesting to see some versions of these attacks from a firmware perspective.
+
+### Misc
+In this paper, they introduce ["Lamphone"](https://www.nassiben.com/lamphone), a side-channel attack for eavesdropping on sound.
+In this attack, a remote electro-optical sensor is used to analyze the frequency response of a hanging light bulb to sound.
+This shows fluctuations in air pressure on the surface of the hanging bulb, which may cause the bulb to vibrate slightly. 
+By exploiting this, eavesdroppers can listen passively, and in real-time.
