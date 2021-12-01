@@ -13,7 +13,7 @@ pin: true
 - **Link to Paper**: [here](https://www.usenix.org/conference/usenixsecurity21/presentation/ahmadi)
 - **Food**: No food
 
-## Summay
+## Summary
 * What is the problem?
 Probabilistically finding bugs is hard and often relies on large datasets to train on.
 * How did they solve it?
@@ -58,9 +58,9 @@ How to detect inconsistency bugs in large code bases in a vulnerability-type-agn
 
 ![image1](https://user-images.githubusercontent.com/1651784/144291781-59b39e9c-8ed5-4a6d-852c-bc668c717345.jpg)
 
-FICS was applied on five open source codebases. It managed to find 1821 inconsistencies out of which 95 were poor coding styles and 121 were potential bugs. 22 bugs have been confirmed by respective developer teams. Manual checking was required to decide on consistent and inconsistent constructs. 
+FICS was applied on five open source codebases. It managed to find **1821 inconsistencies** out of which 95 were poor coding styles and 121 were potential bugs. **22 bugs** have been confirmed by respective developer teams. Manual checking was required to decide on consistent and inconsistent constructs. 
 
-70 percent bugs were missing checks by developers(bounds checks, safety checks etc), 20 percent were call deviations and 10 percent were other factors such as casting, uninitialised variables etc. Evaluations were done on a workstation with 200 GB of RAM and 20 cores processor. Only OpenSSL and QEMU codebases needed more than 5 hours for evaluation.
+**70 percent** bugs were missing checks by developers(bounds checks, safety checks etc), **20 percent** were call deviations and **10 percent** were other factors such as casting, uninitialised variables etc. Evaluations were done on a workstation with 200 GB of RAM and 20 cores processor. Only OpenSSL and QEMU codebases needed more than 5 hours for evaluation.
 
 There is no support for C++ code, only C code can be analyzed by FICS. Large codebases cannot be handled by FICS as RAM requirement keeps on increasing. FICS may not catch one liner bugs. To detect bugs, non-buggy code blocks with similar functionality are needed for comparison. 
 
