@@ -1,5 +1,5 @@
 ---
-title: "Detecting Kernel Refcount Bugs with Two-Dimensional Consistency Checking"
+title: "Finding Bugs Using Your Own Code: Detecting Functionally-similar yet Inconsistent Code"
 author: Team bi0s
 categories: [ML]
 tags: [LLVM, ML, embeded vector]
