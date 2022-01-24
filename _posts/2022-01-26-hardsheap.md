@@ -15,6 +15,19 @@ pin: true
 
 # Summary of Reviews and Discussion
 
+HardsHeap presents a method/framework for evaluating secure allocators via integration with a fuzzer (AFL). It builds upon previous work by ArcHeap and successfully found 10 bugs in 7 allocator implementations. This article aims to summarize and discuss the criticisms made by other review groups of the papers' strengths and weaknesses. As a whole, the 4 review groups were highly positive on HardsHeap's acceptance into a top-tier security conference and its relative impact on its field. However, there were a number of specific criticisms on (1) the scientific novelty of the paper and (2) the quality of its presentation. This article begins with an overall discussion of the various strengths and weaknesses collated from the submitted reviews so far before going into detail about points (1) and (2) respectively.
+
+| 			 | RevRec | RevExp | OveMer | RevInt | WriQua | EthCon |
+| ---------  | --- | --- | --- | --- | --- | --- |
+| Review #1A | 4/6 | 1/4 | 4/5 | 2/3 | 3/5 | 1 (N/A) |
+| Review #1B | 6/6 | 2/4 | 4/5 | 3/3 | 4/5 | 1 (N/A) |
+| Review #1C | 5/6 | 3/4 | 3/5 | 3/3 | 4/5 | 1 (N/A) |
+| Review #1D | 5/6 | 4/4 | 3/5 | 2/3 | 3/5 | 1 (N/A) |
+
+Reviewers spanned the range of expertise on the topic of secure allocators, with one reviewer in each level of expertise from 1 to 4. Despite this, expertise had little effect on interest and acceptance, with all four review groups chosing to accept the paper (two accepts, one weak accept, and one strong accept). We see that while the paper was ranked with an above average amount of merit and strong reviewer interest, reviewers generally ranked the writing quality lower than the overall merits of the paper. Corelating this with the resulting recommendations and feedback, we suspect that the relatively weak presentation of the paper is the main concern holding back full understanding and acceptance.
+
+Group discussion between reviewers generally agreed that the core merit of HardsHeap is in how the paper tackles an important, if obvious, area in secure allocator research. Previous papers in the field had yet to adequetely propose a means of objectively evaluating new secure allocator designs. Musings about scientific novelty aside, reviewers also praised the impact of the paper as a primary reason for its acceptance, with two groups referencing the real-world "trophies" found by HardsHeap on their GitHub repository as a significant factor in their appreciation of the paper. On the flip side, multiple reviewers questioned the true extensibility of the platform, citing its lack of support for Windows and other non-standalone secure allocators, as well as the relative effort of "only requiring hundreds of lines [of code]" to implement new modules. Besides this, reviewers debated heavily on the merits and faiings of the paper's presentation style, overall finding it adequete for communicating its overall ideas but poorly focused when it came to implementation details the reviewers were interested in.
+
 # The Evergreen Topic of Novelty
 
 The question of scientific novelty comes up in most of our discussions, and this was no exception.
