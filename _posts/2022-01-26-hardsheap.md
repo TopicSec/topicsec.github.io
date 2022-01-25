@@ -46,12 +46,14 @@ Drawing a hard line between a standalone project and an extension to another pro
 
 # Structure and Language
 
--The writing style of the paper was not reader-friendly, and it might seem overcomplicated for some readers.
-The grammar and the formatting could be improved, there were a lot of typos in the writing.
--Moreover, the tables and the diagrams were hard to follow, and it seemed that they did not help to explain the concept well.
-It seemed that some illustrations were not necessary to explain the concept. The illustrations appear in places where it does not make sense but some of it is due to the fact that Latex does the formatting nicely, but it places the illustrations in a place where it will utilize the space efficiently.
--The related works is in section 11 which appears much later in the paper comparatively. This might be due to the fact that in systems papers, they are placed towards the end of the paper because you they do not really understand the system that they have built. So it is hard to have a related works section comparing their work with their own work. It is common to have the related works section towards the end of the paper in systems but if there is any work upon which their system builds, like Archeap in their case, it needs to be mentioned earlier in order to describe their design.
--Furthermore, while presenting their pseudo-code, they have used Python unlike what others practice.
--To summarize it, as we have discussed - the paper is like a master class in how to take a relatively simple idea that was not explored before and present it as a new idea.
+The **writing style** of the paper was not reader-friendly, and it might seem overcomplicated for some readers. The grammar and the formatting could be improved, there were a lot of typos in the writing.
+
+Moreover, the tables and the diagrams were hard to follow, and it seemed that they did not help to explain the concept well. It seemed that some illustrations were not necessary to explain the concept. The illustrations appear in places where it does not make sense but some of it is due to the fact that Latex does the formatting nicely, but it places the illustrations in a place where it will utilize the space efficiently.
+
+The **related works** is in section 11 which appears much later in the paper comparatively. This might be due to the fact that in systems papers, they are placed towards the end of the paper because you they do not really understand the system that they have built. So it is hard to have a related works section comparing their work with their own work. It is common to have the related works section towards the end of the paper in systems but if there is any work upon which their system builds, like Archeap in their case, it needs to be mentioned earlier in order to describe their design.
+
+Furthermore, while presenting their **pseudo-code**, they have used Python unlike what others practice.
+
+To summarize it, as we have discussed - the paper is like a master class in how to take a relatively simple idea that was not explored before and present it as a new idea.
 
 # Bonus Round: What Are You Doing To That Fuzzer
