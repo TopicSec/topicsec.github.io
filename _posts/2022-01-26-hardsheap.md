@@ -33,6 +33,8 @@ Group discussion between reviewers generally agreed that the core merit of Hards
 The question of scientific novelty comes up in most of our discussions, and this was no exception.
 Different reviewers saw the issue very distinctly:
 Some thought the paper was clearly novel since this sort of evaluation of secure allocators hadn't been done before; others were of the opinion that it is mostly just an extension of ArcHeap to target secure allocators.
+To the point of those viewing it as more of an extension, a common point among reviewers was questioning how the fuzzer itself was concretely used in HardsHeap.
+In some ways, familiarity with those details from ArcHeap seemed to be assumed to the detriment of readers who may not have been familiar with it.
 
 In the past, similar discussions have hinged on the real-world impact of the paper, with people originally skeptical that a paper is truly novel being swayed by sufficient real-world impact.
 HardsHeap seems to anticipate this, being very clear in the paper as to which implementation bugs in secure allocators were reported and patched, and including the bug reports as trophies on the project's github page.
@@ -54,3 +56,5 @@ This might be due to the fact that in systems papers, they are placed towards th
 So it is hard to have a related works section comparing their work with their own work.
 It is common to have the related works section towards the end of the paper in systems but if there is any work upon which their system builds, like Archeap in their case, it needs to be mentioned earlier in order to describe their design.
 Furthermore, while presenting their pseudo code, they have used Python unlike what others practice.
+
+# Bonus Round: What Are You Doing To That Fuzzer
