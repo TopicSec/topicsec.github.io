@@ -1,6 +1,6 @@
 ---
 title: "HardsHeap: A Universal and Extensible Framework for Evaluating Secure Allocators"
-author: Team Hot Source Rides Again!
+author: Team Hot Source Rides Again
 categories: [allocators, secure allocators]
 tags: [heap, allocators, secure allocators, fuzzing, evaluation]
 pin: true
