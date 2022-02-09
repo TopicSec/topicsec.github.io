@@ -35,12 +35,12 @@ CrossLine V2 uses V1's memory fingerprinting capabilities as well as the basic S
 
 # Preliminary Reviews: 
 
-
 |              | RevRec | RevExp | OveMer | RevInt | WriQua | EthCon |
 | ---------  | --- | --- | --- | --- | --- | --- |
 | Review #2A | 5/6 | 2/4 | 2/5 | 2/3 | 2/5 | 1 |
 | Review #2B | 4/6 | 2/4 | 3/5 | 2/3 | 2/5 | 1 |
 | Review #2C | 5/6 | 2/4 | 2/5 | 2/3 | 2/5 | 1 |
+
 Only one reviewer considered themselves knowledgeable on this topic. Other reviewers considered themselves only to have either some familiarity or no familiarity. Two reviewers think that paper should be accepted as it is, and the other reviewer thinks the paper should be accepted with only minor revisions.  There were ethical concerns, and all reviewers decided that submission appropriately mitigates potential risks or harm.
 The paper presented an original, new type of attack well described with clear descriptions and technical details. They illustrate their contribution with a well-structured presentation of their approach.  However, most reviewers find the paper hard to read because of paper's terminology. 
 
