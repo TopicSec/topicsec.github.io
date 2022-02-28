@@ -54,3 +54,8 @@ Figure 7 from the paper illustrates crash clusters before and after test case re
 ## ML Techniques
 
 ## Resource Usage
+
+# Accessibility note
+
+Figure 2 is a function call graph with very small nodes and edges solely differentiated through the use of red and green.
+While it was not crucial to following the paper in this case, taking colorblindness (and by proxy, black-and-white print-friendliness) into account when designing graphics is an important effort to make.
