@@ -11,7 +11,7 @@ pin: true
 - **Paper Name**: DeepSight: Mitigating Backdoor Attacks in Federated Learning Through Deep Model Inspection
 - **Conference**: NDSS '22
 - **Author List**: Phillip Rieger, Thien Duc Nguyen, Markus Miettinen, Ahmad-Reza Sadeghi
-- **Link to Paper**: [here](https://dl.acm.org/doi/abs/10.1145/3460120.3484813)
+- **Link to Paper**: [here](https://arxiv.org/abs/2201.00763)
 - **Food**: Chocolate Chip Cookies
 
 # Paper Summary
