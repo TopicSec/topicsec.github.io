@@ -1,10 +1,11 @@
 ---
-title: DeepSight: Mitigating Backdoor Attacks in Federated Learning Through Deep Model Inspection
+title: "DeepSight: Mitigating Backdoor Attacks in Federated Learning Through Deep Model Inspection"
 author: Team New Folder
-categories: [ machine-learning ]
+categories: [ Machine Learning ]
 tags: [ neural-network, federated-learning, machine-learning ]
 pin: true
 ---
+
 
 ## Paper Info
 - **Paper Name**: DeepSight: Mitigating Backdoor Attacks in Federated Learning Through Deep Model Inspection
