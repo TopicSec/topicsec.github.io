@@ -34,8 +34,4 @@ The through-line of reviews was criticism of the overall framing of the paper as
 
 Discussion of the paper largely revolved around its supposed novelty and evaluation. The primary criticism of Bunkerbuster was of its composite nature - at first glance the tool is largely a combination of various existing techniques instead of anything new. While Bunkerbuster did find bugs via symbolic execution that fuzzing platforms like AFL and QSYM could not, the scientific contribution was not obvious to the reviewers. Further discussion placed this as a framing problem: reviewers felt that Bunkerbusters' actual contribution lay more in the use of snapshot+traces to manage path explosion than the engineering done on the framework itself. As written, the papers' introduction and evaluation diluted the apparent impact of this contribution. Thus, reviewers ended up focusing on the system, its privacy concerns, its engineering feasibility and similarity to other existing tools instead, making it difficult to distinguish Bunkerbusters' contributions from existing techniques.
 
-<<<<<<< HEAD
-As a minor note, the papers' diagrams and images can be improved, such as Figure 4 which is placed sideways instead of upright, making it basically impossible to read normally.
-=======
-As a minor note, the papers' diagrams and images can be improved, such as Figure 4 which is placed sideways instead of upright, making it basically impossible to read normally.
->>>>>>> 42057ff... Adding contents
+As a minor note, the paper's diagrams and images can be improved, such as Figure 4 which is placed sideways instead of upright, making it basically impossible to read normally.
