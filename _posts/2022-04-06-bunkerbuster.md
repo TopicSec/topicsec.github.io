@@ -22,6 +22,7 @@ This paper presents Bunkerbuster, a system for automated data-driven bug hunting
 Due to the use of snapshots, Bunkerbuster does not need to explore all the program states at once. Instead, it only explores a small portion of the code that can be traversed by symbolic library calls. This technique significantly reduces the potential search space and avoids the infamous path explosion problem in symbolic execution. That said, Bunkerbuster has some limitations. The targeted programs are limited to benign, unobfuscated, Linux binaries and the system can detect bugs like overflow, UAF, DF and FS.Moreover, bugs found by API snapshots may not be reachable.
 
 # Review Summary
+
 |            | RevRec | RevExp | OveMer | RevInt | WriQua | EthCon |
 | ---------- | ------ | ------ | ------ | ------ | ------ | ------ |
 | Review #9A | 2/6    | 4/4    | 2/5    | 3/3    | 4/5    | 2      |
