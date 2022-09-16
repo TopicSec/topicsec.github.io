@@ -353,19 +353,18 @@
       color: "red"
     },
     {
-      team: "We Love Hawaii",
-      color: "green"
-    },
-    {
       team: "Pizza Time",
       color: "yellow"
+    },
+    {
+      team: "We Love Hawaii",
+      color: "green"
     },
     ]
 
   var event_types = [
     "Presenting Paper",
     "Writing Blog Post",
-    "Presenting Blog Post",
   ]
 
   var skipped_weeks = [
