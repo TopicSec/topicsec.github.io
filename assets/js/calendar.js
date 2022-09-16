@@ -337,24 +337,28 @@
 })();
 
 !(function () {
-  var semesterStart = moment("2021-09-29 12:00:00")
-  var semesterEnd = moment("2021-12-01 12:00:00")
+  var semesterStart = moment("2022-09-15 12:00:00")
+  var semesterEnd = moment("2022-12-02 12:00:00")
   var teams = [
     {
-      team: "bi0s",
-      color: "green"
-    },
-    {
-      team: "Apollo",
-      color: "red"
-    },
-    {
-      team: "Hot Source",
+      team: "Thanos was Left",
       color: "blue"
     },
     {
-      team: "Group Lorem Ipsum",
+      team: "Not Yan",
       color: "orange"
+    },
+    {
+      team: "Hot Source Rides Again Again",
+      color: "red"
+    },
+    {
+      team: "We Love Hawaii",
+      color: "green"
+    },
+    {
+      team: "Pizza Time",
+      color: "purple"
     },
     ]
 
