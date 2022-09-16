@@ -358,7 +358,7 @@
     },
     {
       team: "Pizza Time",
-      color: "purple"
+      color: "yellow"
     },
     ]
 
