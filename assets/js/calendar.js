@@ -337,7 +337,7 @@
 })();
 
 !(function () {
-  var semesterStart = moment("2022-09-15 12:00:00")
+  var semesterStart = moment("2022-09-21 12:00:00")
   var semesterEnd = moment("2022-12-02 12:00:00")
   var teams = [
     {
