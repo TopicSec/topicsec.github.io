@@ -22,8 +22,10 @@ Fuzzware is designed based on the approach that many accesses to the hardware pe
 # Design
 
 The Fuzzware tool is designed to explore firmware behavior by precisely eliminating both partial and full input overhead. The dynamic symbolic execution technology at the Fuzzware can greatly narrow the range of hardware-generated value. The Fuzzware tool assumes that the target hardware has basic memory mappings such as RAM ranges and the broad MMIO space, and researcher can get the binary firmware image. Also, the attacker is assumed to have complete control over the input to the firmware and uses this to perform the attack.
-The design of the Fuzzware tool is to use an additional model on the ISA emulator to simulate MMIO accesses. Therefore, this emulator can skip actual runs and get MMIO access results if there is a suitable model. For those MMIO access that cannot be skipped, Fuzzware will run it in emulator and generate a model for future MMIO accesses.
-![overview](https://i.imgur.com/wtGsGwY.png)
+The design of the Fuzzware tool is to use an additional model  on the ISA emulator to simulate MMIO accesses, as shown in Figure 4. Therefore, this emulator can skip actual runs and get MMIO access results if there is a suitable model. For those MMIO access that cannot be skipped, Fuzzware will run it in emulator and generate a model for future MMIO accesses. Currently, Fuzzware can handle five common types of MMIO access, as shown in Table 1.
+![overview](https://i.imgur.com/inTEY9f.png)
+![model4](https://i.imgur.com/ZxDiamV.png)
+
 
 
 # Conclusion
