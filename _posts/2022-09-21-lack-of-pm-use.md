@@ -1,6 +1,8 @@
 ---
-Title: "Why Users (Don't) Use Password Managers at a Large Educational Institution"
-Author:  Team Not Yan 
+title: "Why Users (Don't) Use Password Managers at a Large Educational Institution"
+author:  Team Not Yan 
+categories: [Password Manager]
+tags: [Password Manager, Privacy]
 pin: true
 ---
 
@@ -21,13 +23,13 @@ The authors do a thorough analysis and answer four research questions: (a) aware
 
 They concluded that 91% of participants are aware of PMs. 94% of PM users were satisfied with PMs. Figure 3 shows the different PMs used by the survey participants. Participants use different strategies. The most commonly used strategy is remembering the passwords 70% of participants do this. Next, 60% of them use Browser built-in passwords. Interestingly 10% of the participants reset their passwords each time!
 
-![](/assets/img/2022-09-21-lack-of-pm-use/pms.jpg) 
+![PMs](/assets/img/2022-09-21-lack-of-pm-use/pms.jpg) 
 
 Usability and ease of use play a huge role in the decision to opt for PMs. Authors asked participants what their likes and dislikes in PMs based on [1]. Table 6 and Table 7  summaries the results of their likes and dislikes respectively. The Participants would use Browser and OS PMs because of their ease of use. Autofill feature and not remembering passwords also motivate them to go for PMs. Sixty-five participants don't use PMs, of which twenty-four had trust issues with PMs. Eighteen of them do not need PMs, and a few of them lack awareness.
 
-![](/assets/img/2022-09-21-lack-of-pm-use/like.jpg) 
+![table6](/assets/img/2022-09-21-lack-of-pm-use/like.jpg) 
 
-![](/assets/img/2022-09-21-lack-of-pm-use/dislike.jpg) 
+![table7](/assets/img/2022-09-21-lack-of-pm-use/dislike.jpg) 
 
 Next, the authors suggest some improvements. Institutions should provide free PMs, arrange info sessions and publicize the PMs. In addition, institutions should invest and host third-party PMs. For the PM developers, the authors suggest having some visual icon embedded in the browser or an easy-to-detect password field and warning the user in case of password reuse.
 
@@ -45,7 +47,7 @@ Another underexplored idea is that password managers are really a shifting of se
 
 The paper itself only had a few areas that could have been improved. Data sets were limited to educational institutions in the United States only, not any foreign or non-educational venues. The summary of this paper was very short and could have used more detail in the future improvements/future work sections. Self-reported subjective data such as asking users to rate their skill level or asking them how secure certain passwords are in comparison to other passwords could have been measured in a more quantitative way.  
 
+References:
 
-References 
 [1] Sarah Pearman, Shikun Aerin Zhang, Lujo Bauer, Nicolas Christin, and Lorrie Faith Cranor. Why people (don’t) use password managers effectively. In Proc. SOUPS,
 2019.
