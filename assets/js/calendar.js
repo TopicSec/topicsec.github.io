@@ -345,16 +345,16 @@
       color: "blue"
     },
     {
-      team: "Not Yan",
-      color: "orange"
+      team: "Pizza Time",
+      color: "yellow"
     },
     {
       team: "Hot Source Rides Again Again",
       color: "red"
     },
     {
-      team: "Pizza Time",
-      color: "yellow"
+      team: "Not Yan",
+      color: "orange"
     },
     {
       team: "We Love Hawaii",
