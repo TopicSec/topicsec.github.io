@@ -54,6 +54,7 @@ Also, the PAL proved that it can prevent exploits of 3 known CVEs and refines th
 
 # Review Summary
 
+The data presentation for efficacy comparisons with other solutions was good. The overhead-benefit ratio was impressive. Their strong threat model leads to a seemingly robust design. Moreover, the OS-agnostic approach provides portability. Last but not the least, post validation assures correctness and security.
 
 
 # Discussion Summary
