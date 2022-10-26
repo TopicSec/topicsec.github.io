@@ -22,7 +22,6 @@ There are various developments happening in the CFI design space to enhance the 
 PAL also has a static validator that recognizes the common pitfalls and attack versions on the kernel image. Kernel image meets all the necessary requirements if the static validator assures it has no pitfalls. PAL exhibited better CFI precision compared to Android’s CFI. PAL is the first PA scheme that evaluated performance on Mac mini based on M1 chip.
 
 #Background:
-
 Control Flow Integrity:
 
 Code reuse attacks are the most common attacks, an attacker performs arbitrary computation by chaining existing code gadgets after hijacking the program control flow. To avoid these attacks the integrity of control flow transfers should remain intact which is called Control Flow Integrity(CFI). CFI schemes mainly rely on the forward transitions, considering the backward transitions are handled by other techniques like shadow stack. PAL uses both forward and backward transitions to design the solution.
@@ -32,7 +31,6 @@ Pointer Authentication:
 Pointer Authentication is a hardware security feature with minimal performance. A pointer is signed when the code is generated and is authenticated before its use. If the authentication succeeds the restored function or data pointer is used. If the authentication fails, it flips the error bit in the pointer and any later use of the pointer will raise exceptions.
 
 #Overview:
-
 Threat Model:
 
 A threat model is created assuming the attacker has the capabilities of arbitrary reads and writes at arbitrary moments and the victim has all modern defense mechanisms like secure boot, DEP, KASLR, and PXN. Also assuming the KASLR can be bypassed by inferring the layout of the kernel image.
@@ -53,10 +51,8 @@ To evaluate the accuracy of protection, the author compared PAL with other prote
 Also, the PAL proved that it can prevent exploits of 3 known CVEs and refines the Linux and FreeBSD context.
 
 # Review Summary
-
 The data presentation for efficacy comparisons with other solutions was good. The overhead-benefit ratio was impressive. Their strong threat model leads to a seemingly robust design. Moreover, the OS-agnostic approach provides portability. Last but not the least, post-validation assures correctness and security.
 
 
 # Discussion Summary
-
 Their pipeline included static validators. So it was like they are going to run this modified compiler tool train to make these changes. Then they are going to do a static validator, and if they, did something wrong, they just assign it back to some programmer, who is going to write a manual fix to address the issue that is found. They do not explicitly say that they deal with edge cases. The static validator is just the fact that we can have finer contexts. Their evaluation results show that it does have an impact but that is kind of a foregone conclusion that if you have a finer context, there would be fewer jump targets and so it's just Hey, We did this Um, that's just my personal thoughts. I still think that it's a contribution. The paper does not clearly mention if the earlier implementations could have deal with the issues as well.
