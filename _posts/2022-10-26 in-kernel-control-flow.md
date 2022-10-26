@@ -14,19 +14,19 @@ pin: true
 - **Link to Paper**: [here](https://www.usenix.org/system/files/sec22-yoo.pdf)
 - **Food**: No food
 
-#Introduction:
+# Introduction:
 The foremost problems in operating systems are memory safety issues. Modern mitigation techniques such as KASLR, DEP, SMA/EP and return and jump-oriented programming are developed and deployed. Control flow integrity enforces the program to follow the control graph at the compilation time which helped in the mitigation of the exploitation techniques.
 
 There are various developments happening in the CFI design space to enhance the existing CFI’s and make CFI protection faster and more practical. Apple recently tried to speed up CFI by utilizing hardware-based protection called ARM Pointer Authentication. This paper proposed another CFI protection kernel called PAL, this enhances the CFI precision while imposing negligible performance overhead. As part of this design, the context analyzer captures common idioms and design patterns to enhance precision.
 
 PAL also has a static validator that recognizes the common pitfalls and attack versions on the kernel image. Kernel image meets all the necessary requirements if the static validator assures it has no pitfalls. PAL exhibited better CFI precision compared to Android’s CFI. PAL is the first PA scheme that evaluated performance on Mac mini based on M1 chip.
 
-#Background:
+# Background:
 Code reuse attacks are the most common attacks, an attacker performs arbitrary computation by chaining existing code gadgets after hijacking the program control flow. To avoid these attacks the integrity of control flow transfers should remain intact which is called Control Flow Integrity(CFI). CFI schemes mainly rely on the forward transitions, considering the backward transitions are handled by other techniques like shadow stack. PAL uses both forward and backward transitions to design the solution.
 
 Pointer Authentication is a hardware security feature with minimal performance. A pointer is signed when the code is generated and is authenticated before its use. If the authentication succeeds the restored function or data pointer is used. If the authentication fails, it flips the error bit in the pointer and any later use of the pointer will raise exceptions.
 
-#Overview:
+# Overview:
 A threat model is created assuming the attacker has the capabilities of arbitrary reads and writes at arbitrary moments and the victim has all modern defense mechanisms like secure boot, DEP, KASLR, and PXN. Also assuming the KASLR can be bypassed by inferring the layout of the kernel image.
 
 
