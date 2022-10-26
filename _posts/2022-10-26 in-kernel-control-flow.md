@@ -26,7 +26,7 @@ PAL also has a static validator that recognizes the common pitfalls and attack v
 
 Control Flow Integrity:
 
-Code reuse attacks are the most common attacks, an attacker performs arbitrary computation by chaining existing code gadgets after hijacking the program control flow. To avoid these attacks the integrity of control flow transfers should remain intact which is called Control Flow Integrity(CFI). CFI schemes mainly rely of the forward transitions, considering the backward transitions are handled by other techniques like shadow stack. PAL uses both forward and backward transitions to design the solution.
+Code reuse attacks are the most common attacks, an attacker performs arbitrary computation by chaining existing code gadgets after hijacking the program control flow. To avoid these attacks the integrity of control flow transfers should remain intact which is called Control Flow Integrity(CFI). CFI schemes mainly rely on the forward transitions, considering the backward transitions are handled by other techniques like shadow stack. PAL uses both forward and backward transitions to design the solution.
 
 Pointer Authentication:
 
@@ -45,8 +45,10 @@ Replaying Attack: A leaked signed function pointer can be reused by the adversa
 ## Design
 The PAL has 3 parts: context analyzer, compiler tool-chain, and static validator.
 The PLA compiler signs a function pointer at its generation and authenticates it right before use. Since the PA-based solution is largely dependent on the proper selection of a PA context. The context analyzer of PAL spots adequate places for adopting run-time contexts with the given kernel code and the desired precision level. The static validator is used to evaluate PA-based solutions.
+
 ## Implementation
 The PAL implementation is based on GCC 7.4.0 with a new GIMPLE pass as a plugin. The authors modified Linux and FreeBSD kernels to let the context analyzer automatically add annotations, prevent preemption hijacking and protect the context from the backward edge.
+
 ## Evaluation
 To evaluate the accuracy of protection, the author compared PAL with other protection schemes such as Android, iOS, and PARTS. The evaluation metric is the number of indirect calls. The results show that PAL is more accurate than other solutions.
 Also, the PAL proved that it can prevent exploits of 3 known CVEs and refines the Linux and FreeBSD context.
