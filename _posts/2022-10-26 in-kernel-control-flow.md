@@ -59,3 +59,4 @@ The data presentation for efficacy comparisons with other solutions was good. Th
 
 # Discussion Summary
 
+Their pipeline included static validators. So it was like they are going to run this modified compiler tool train to make these changes. Then they are going to do a static validator, and if they, did something wrong, they just assign it back to some programmer, who is going to write a manual fix to address the issue that is found. They do not explicitly say that they deal with edge cases. The static validator is just the fact that we can have finer contexts. Their evaluation results show that it does have an impact but that is kind of a foregone conclusion that if you have a finer context, there would be fewer jump targets and so it's just Hey, We did this Um, that's just my personal thoughts. I still think that it's a contribution. The paper does not clearly mention if the earlier implementations could have deal with the issues as well.
