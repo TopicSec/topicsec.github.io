@@ -22,20 +22,13 @@ There are various developments happening in the CFI design space to enhance the 
 PAL also has a static validator that recognizes the common pitfalls and attack versions on the kernel image. Kernel image meets all the necessary requirements if the static validator assures it has no pitfalls. PAL exhibited better CFI precision compared to Android’s CFI. PAL is the first PA scheme that evaluated performance on Mac mini based on M1 chip.
 
 #Background:
-Control Flow Integrity:
-
 Code reuse attacks are the most common attacks, an attacker performs arbitrary computation by chaining existing code gadgets after hijacking the program control flow. To avoid these attacks the integrity of control flow transfers should remain intact which is called Control Flow Integrity(CFI). CFI schemes mainly rely on the forward transitions, considering the backward transitions are handled by other techniques like shadow stack. PAL uses both forward and backward transitions to design the solution.
-
-Pointer Authentication:
 
 Pointer Authentication is a hardware security feature with minimal performance. A pointer is signed when the code is generated and is authenticated before its use. If the authentication succeeds the restored function or data pointer is used. If the authentication fails, it flips the error bit in the pointer and any later use of the pointer will raise exceptions.
 
 #Overview:
-Threat Model:
-
 A threat model is created assuming the attacker has the capabilities of arbitrary reads and writes at arbitrary moments and the victim has all modern defense mechanisms like secure boot, DEP, KASLR, and PXN. Also assuming the KASLR can be bypassed by inferring the layout of the kernel image.
 
-Attack Vectors:
 
 Replaying Attack: A leaked signed function pointer can be reused by the adversary read capabilities and scan the entire kernel memory and collect all the function pointers. Forging pointers via signing gadgets: A adversary can create a signed pointer with the chosen context for the indirect call. Brute forcing attack: PA uses bits to embed MAC as part of the pointer, but this can be easily identified by enumerating the input space.
 
