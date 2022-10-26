@@ -14,7 +14,6 @@ pin: true
 - **Link to Paper**: [here](https://www.usenix.org/system/files/sec22-yoo.pdf)
 - **Food**: No food
 
-# Paper Summary
 #Introduction:
 The foremost problems in operating systems are memory safety issues. Modern mitigation techniques such as KASLR, DEP, SMA/EP and return and jump-oriented programming are developed and deployed. Control flow integrity enforces the program to follow the control graph at the compilation time which helped in the mitigation of the exploitation techniques.
 
